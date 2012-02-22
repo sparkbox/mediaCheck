@@ -3,17 +3,22 @@ var mediaCheck = function(options) {
       matchMedia = window.matchMedia !== undefined;
       
   if (matchMedia) {
-  
-    function mqChange() {
+    mqChange = function(mq, options) {
       if (mq.matches) {
         options.entry();
-      } else if (!mq.matches) {
+      } else {
         options.exit();
       }
-    }
-
-    mq = window.matchMedia(options.media),
-    mq.addListener(mqChange);
-    mqChange();
+    };
+    
+    createListener = function(mqDetails) {
+      mq = window.matchMedia(mqDetails.media);
+      mq.addListener(function() {
+        mqChange(mq, mqDetails);
+      });
+      mqChange(mq, mqDetails);
+    };
+    
+    createListener(options);
   }
 };

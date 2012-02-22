@@ -1,5 +1,4 @@
-@media (max-width: 420px) {
+@media (max-width: 420px), (max-width: 600px) {
   body {
-    background: red;
   }
 }
