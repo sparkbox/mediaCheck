@@ -2,6 +2,11 @@
 
 This is a simple wrapper around matchMedia to run code on entry and exit from media queries.
 
+
+##Demo
+There is a really basic example here: http://sparkbox.github.com/mediaCheck/
+
+
 ##Example:
 
 ```javascript
