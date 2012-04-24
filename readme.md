@@ -1,6 +1,6 @@
 #mediaCheck
 
-This is a simple wrapper around matchMedia to run code on entry and exit from media queries.
+This is a simple wrapper around matchMedia to run code on entry and exit from media queries. It also uses browser resize as a fallback for browsers that don't support matchMedia.
 
 
 ##Demo

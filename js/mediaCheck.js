@@ -9,7 +9,7 @@ var mediaCheck = function( options ) {
       options.exit();
     }
   };
-      
+  
   
   if ( matchMedia ) {
     // Has matchMedia support
@@ -21,7 +21,6 @@ var mediaCheck = function( options ) {
       });
       mqChange( mq, options );
     };
-    
     createListener();
     
   } else {
