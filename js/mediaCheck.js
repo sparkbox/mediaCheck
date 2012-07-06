@@ -4,12 +4,13 @@ var mediaCheck = function( options ) {
       
   mqChange = function( mq, options ) {
     if ( mq.matches ) {
-      options.entry();
-    } else {
+      if ( typeof options.entry === "function" ) {
+        options.entry();
+      }
+    } else if ( typeof options.exit === "function" ) {
       options.exit();
     }
   };
-  
   
   if ( matchMedia ) {
     // Has matchMedia support
