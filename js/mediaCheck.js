@@ -25,6 +25,9 @@ var mediaCheck = function( options ) {
     createListener();
     
   } else {
+    // capture the current pageWidth
+    var pageWidth = window.outerWidth;
+
     // No matchMedia support
     var mmListener = function() {
       var parts = options.media.match( /\((.*)-.*:\s*(.*)\)/ ),
@@ -32,9 +35,16 @@ var mediaCheck = function( options ) {
           value = parseInt( parts[ 2 ], 10 ),
           fakeMatchMedia = {};
 
-      fakeMatchMedia.matches = constraint === "max" && value > window.outerWidth ||
-                               constraint === "min" && value < window.outerWidth;
-      mqChange( fakeMatchMedia, options );
+      // scope this to width changes to prevent small-screen scrolling (browser chrome off-screen) from
+      //   triggering a change
+      if (pageWidth != window.outerWidth) {
+        fakeMatchMedia.matches = constraint === "max" && value > window.outerWidth ||
+                                 constraint === "min" && value < window.outerWidth;
+        mqChange( fakeMatchMedia, options );
+        
+        // reset pageWidth
+        pageWidth = window.outerWidth;
+      }
     };
 
     window.addEventListener( "resize", mmListener);
