@@ -35,8 +35,8 @@ var mediaCheck = function( options ) {
           value = parseInt( parts[ 2 ], 10 ),
           fakeMatchMedia = {};
 
-      // scope this to width changes to prevent small-screen scrolling (browser chrome off-screen) from
-      //   triggering a change
+      // scope this to width changes to prevent small-screen scrolling (browser chrome off-screen)
+      //   from triggering a change
       if (pageWidth != window.outerWidth) {
         fakeMatchMedia.matches = constraint === "max" && value > window.outerWidth ||
                                  constraint === "min" && value < window.outerWidth;
@@ -47,7 +47,11 @@ var mediaCheck = function( options ) {
       }
     };
 
-    window.addEventListener( "resize", mmListener);
+    if (window.addEventListener) {
+      window.addEventListener("resize", mmListener);
+    } else if (window.attachEvent) {
+      window.attachEvent("resize", mmListener);
+    }
     mmListener();
   }
 };
