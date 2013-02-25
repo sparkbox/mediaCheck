@@ -1,6 +1,6 @@
 var mediaCheck = function( options ) {
   var mq,
-      matchMedia = window.matchMedia !== undefined;
+      matchMedia = (window.matchMedia !== undefined & &window.matchMedia('').addListener !== undefined);
       
   mqChange = function( mq, options ) {
     if ( mq.matches ) {
