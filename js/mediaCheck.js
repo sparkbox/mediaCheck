@@ -12,6 +12,30 @@ var mediaCheck = function( options ) {
     }
   };
   
+  convertEmToPx = function( value ) {
+    var emElement;
+          
+    emElement = document.createElement( "div" );
+    emElement.style.width = "1em";
+    document.body.appendChild( emElement );
+
+    return value * emElement.offsetWidth;    
+  }
+  
+  getPXValue = function( width, unit ) {
+    var value;
+    
+    switch ( unit ) {
+    case "em":
+      value = convertEmToPx( width );
+      break;
+    default:
+      value = width;
+    }
+        
+    return value;
+  }
+  
   if ( matchMedia ) {
     // Has matchMedia support
     createListener = function() {
@@ -30,11 +54,12 @@ var mediaCheck = function( options ) {
 
     // No matchMedia support
     var mmListener = function() {
-      var parts = options.media.match( /\((.*)-.*:\s*(.*)\)/ ),
+      var parts = options.media.match( /\((.*)-.*:\s*([\d]*)(.*)\)/ ),
           constraint = parts[ 1 ],
-          value = parseInt( parts[ 2 ], 10 ),
+          value = getPXValue( parseInt( parts[ 2 ], 10 ), parts[3] ),
           fakeMatchMedia = {};
 
+      
       // scope this to width changes to prevent small-screen scrolling (browser chrome off-screen)
       //   from triggering a change
       if (pageWidth != window.outerWidth) {
