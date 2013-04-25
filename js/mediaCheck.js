@@ -73,7 +73,7 @@ var mediaCheck = function( options ) {
 
     // No matchMedia support
     var mmListener = function() {
-      var parts = options.media.match( /\((.*)-.*:\s*([\d]*)(.*)\)/ ),
+      var parts = options.media.match( /\((.*)-.*:\s*([\d\.]*)(.*)\)/ ),
           constraint = parts[ 1 ],
           value = getPXValue( parseInt( parts[ 2 ], 10 ), parts[3] ),
           fakeMatchMedia = {};
