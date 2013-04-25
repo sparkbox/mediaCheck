@@ -2,8 +2,7 @@ var mediaCheck = function( options ) {
   var mq,
       matchMedia = window.matchMedia !== undefined;
   
-  if ( !matchMedia ) {
-    console.log( "A" );
+  if ( matchMedia ) {
     mqChange = function( mq, options ) {
       if ( mq.matches ) {
         if ( typeof options.entry === "function" ) {
@@ -25,7 +24,6 @@ var mediaCheck = function( options ) {
     createListener();
     
   } else {
-    console.log( "B" );
     // capture the current pageWidth
     var pageWidth = window.outerWidth,
         breakpoints = {};
