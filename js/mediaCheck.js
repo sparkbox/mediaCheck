@@ -1,42 +1,18 @@
 var mediaCheck = function( options ) {
   var mq,
       matchMedia = window.matchMedia !== undefined;
-      
-  mqChange = function( mq, options ) {
-    if ( mq.matches ) {
-      if ( typeof options.entry === "function" ) {
-        options.entry();
+  
+  if ( !matchMedia ) {
+    console.log( "A" );
+    mqChange = function( mq, options ) {
+      if ( mq.matches ) {
+        if ( typeof options.entry === "function" ) {
+          options.entry();
+        }
+      } else if ( typeof options.exit === "function" ) {
+        options.exit();
       }
-    } else if ( typeof options.exit === "function" ) {
-      options.exit();
-    }
-  };
-  
-  convertEmToPx = function( value ) {
-    var emElement;
-          
-    emElement = document.createElement( "div" );
-    emElement.style.width = "1em";
-    document.body.appendChild( emElement );
-
-    return value * emElement.offsetWidth;    
-  }
-  
-  getPXValue = function( width, unit ) {
-    var value;
-    
-    switch ( unit ) {
-    case "em":
-      value = convertEmToPx( width );
-      break;
-    default:
-      value = width;
-    }
-        
-    return value;
-  }
-  
-  if ( matchMedia ) {
+    };
     // Has matchMedia support
     createListener = function() {
 
@@ -49,8 +25,51 @@ var mediaCheck = function( options ) {
     createListener();
     
   } else {
+    console.log( "B" );
     // capture the current pageWidth
-    var pageWidth = window.outerWidth;
+    var pageWidth = window.outerWidth,
+        breakpoints = {};
+    
+    mqChange = function( mq, options ) {
+      if ( mq.matches ) {
+        if ( typeof options.entry === "function" && ( breakpoints[options.media] === false || breakpoints[options.media] == null )) {
+          options.entry();
+          breakpoints[options.media] = true
+        }
+      } else if ( typeof options.exit === "function" && ( breakpoints[options.media] === true || breakpoints[options.media] == null )) {
+        options.exit();
+        breakpoints[options.media] = false
+      }
+    };
+    
+    convertEmToPx = function( value ) {
+      var emElement;
+            
+      emElement = document.createElement( "div" );
+      emElement.style.width = "1em";
+      document.body.appendChild( emElement );
+
+      return value * emElement.offsetWidth;    
+    };
+    
+    getPXValue = function( width, unit ) {
+      var value;
+      
+      switch ( unit ) {
+      case "em":
+        value = convertEmToPx( width );
+        break;
+      default:
+        value = width;
+      }
+          
+      return value;
+    };
+    
+    // Create list of breakpoints
+    for ( i in options ) {
+      breakpoints[options.media] = null;
+    }
 
     // No matchMedia support
     var mmListener = function() {
