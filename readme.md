@@ -17,6 +17,9 @@ mediaCheck({
   },
   exit: function() {
     console.log('leaving 420');
+  },
+  both: function() {
+    console.log('changing state');
   }
 });
 ```
