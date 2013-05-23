@@ -11,6 +11,9 @@ var mediaCheck = function( options ) {
       } else if ( typeof options.exit === "function" ) {
         options.exit();
       }
+      if ( typeof options.both === "function" ) {
+        options.both();
+      }
     };
     // Has matchMedia support
     createListener = function() {
@@ -37,6 +40,9 @@ var mediaCheck = function( options ) {
       } else if ( typeof options.exit === "function" && ( breakpoints[options.media] === true || breakpoints[options.media] == null )) {
         options.exit();
         breakpoints[options.media] = false
+      }
+      if ( typeof options.both === "function" ) {
+        options.both();
       }
     };
     

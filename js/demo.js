@@ -31,4 +31,11 @@ $(function() {
     }
   });
   
+  mediaCheck({
+    media: '(max-width: 50em)',
+    both: function() {
+      console.log('starting or ending 50em');
+    }
+  });
+  
 });
