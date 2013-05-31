@@ -27,8 +27,8 @@ var mediaCheck = function( options ) {
     createListener();
     
   } else {
-    // capture the current pageWidth
-    var pageWidth = window.outerWidth,
+    // pageWidth is initialized during initial match
+    var pageWidth,
         breakpoints = {};
     
     mqChange = function( mq, options ) {
