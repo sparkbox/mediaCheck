@@ -35,15 +35,15 @@ var mediaCheck = function( options ) {
       if ( mq.matches ) {
         if ( typeof options.entry === "function" && ( breakpoints[options.media] === false || breakpoints[options.media] == null )) {
           options.entry();
-          breakpoints[options.media] = true
         }
       } else if ( typeof options.exit === "function" && ( breakpoints[options.media] === true || breakpoints[options.media] == null )) {
         options.exit();
-        breakpoints[options.media] = false
       }
       if ( typeof options.both === "function" ) {
         options.both();
       }
+
+      breakpoints[options.media] = mq.matches;
     };
     
     convertEmToPx = function( value ) {
