@@ -1,0 +1,11 @@
+{
+  "name": "mediaCheck",
+  "version": "0.2.0",
+  "main": "js/mediaCheck.js",
+  "ignore": [
+    "stylesheets",
+    "node_modules",
+    "index.html",
+    "Gruntfile.coffee"
+  ]
+}
