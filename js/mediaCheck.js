@@ -1,5 +1,5 @@
 var mediaCheck = function( options ) {
-  var mq,
+  var mq, mqChange, createListener, convertEmToPx, getPXValue,
       matchMedia = window.matchMedia !== undefined;
   
   if ( matchMedia ) {
