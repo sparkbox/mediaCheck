@@ -80,25 +80,25 @@ var mediaCheck = function( options ) {
       var parts = options.media.match( /\((.*)-.*:\s*([\d\.]*)(.*)\)/ ),
           constraint = parts[ 1 ],
           value = getPXValue( parseInt( parts[ 2 ], 10 ), parts[3] ),
-          fakeMatchMedia = {};
+          fakeMatchMedia = {},
+          clientWidth = document.documentElement.clientWidth;
 
-      
       // scope this to width changes to prevent small-screen scrolling (browser chrome off-screen)
       //   from triggering a change
-      if (pageWidth != window.outerWidth) {
-        fakeMatchMedia.matches = constraint === "max" && value > window.outerWidth ||
-                                 constraint === "min" && value < window.outerWidth;
+      if (pageWidth != clientWidth) {
+        fakeMatchMedia.matches = constraint === "max" && value > clientWidth ||
+                                 constraint === "min" && value < clientWidth;
         mqChange( fakeMatchMedia, options );
         
         // reset pageWidth
-        pageWidth = window.outerWidth;
+        pageWidth = clientWidth;
       }
     };
 
     if (window.addEventListener) {
       window.addEventListener("resize", mmListener);
     } else if (window.attachEvent) {
-      window.attachEvent("resize", mmListener);
+      window.attachEvent("onresize", mmListener);
     }
     mmListener();
   }
