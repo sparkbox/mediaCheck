@@ -30,9 +30,7 @@ var mediaCheck = function( options ) {
     createListener();
 
   } else {
-    // pageWidth is initialized during initial match
-    var pageWidth,
-        breakpoints = {};
+    var breakpoints = {};
 
     mqChange = function( mq, options ) {
       if ( mq.matches ) {
@@ -84,19 +82,12 @@ var mediaCheck = function( options ) {
           constraint = parts[ 1 ],
           value = getPXValue( parseInt( parts[ 2 ], 10 ), parts[3] ),
           fakeMatchMedia = {},
-          clientWidth = document.documentElement.clientWidth;
+          windowWidth = window.outerWidth || document.documentElement.clientWidth;
 
 
-      // scope this to width changes to prevent small-screen scrolling (browser chrome off-screen)
-      //   from triggering a change
-      if (pageWidth != clientWidth) {
-        fakeMatchMedia.matches = constraint === "max" && value > clientWidth ||
-                                 constraint === "min" && value < clientWidth;
-        mqChange( fakeMatchMedia, options );
-
-        // reset pageWidth
-        pageWidth = clientWidth;
-      }
+      fakeMatchMedia.matches = constraint === "max" && value > windowWidth ||
+                               constraint === "min" && value < windowWidth;
+      mqChange( fakeMatchMedia, options );
     };
 
     if (window.addEventListener) {
