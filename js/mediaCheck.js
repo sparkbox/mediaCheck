@@ -6,7 +6,7 @@
 
   http://github.com/sparkbox/mediaCheck
 
-  Version: 0.4.0, 06-05-2014
+  Version: 0.4.1, 06-05-2014
   Author: Rob Tarr (http://twitter.com/robtarr)
 */
 (function() {
@@ -63,22 +63,27 @@
         return breakpoints[options.media] = mq.matches;
       };
       convertEmToPx = function(value) {
-        var emElement;
+        var emElement, px;
         emElement = void 0;
         emElement = document.createElement("div");
         emElement.style.width = "1em";
+        emElement.style.position = "absolute";
         document.body.appendChild(emElement);
-        return value * emElement.offsetWidth;
+        px = value * emElement.offsetWidth;
+        document.body.removeChild(emElement);
+        return px;
       };
       getPXValue = function(width, unit) {
         var value;
         value = void 0;
         switch (unit) {
           case "em":
-            return value = convertEmToPx(width);
+            value = convertEmToPx(width);
+            break;
           default:
-            return value = width;
+            value = width;
         }
+        return value;
       };
       for (i in options) {
         breakpoints[options.media] = null;

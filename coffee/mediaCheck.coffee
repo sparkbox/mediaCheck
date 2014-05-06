@@ -43,8 +43,12 @@ window.mediaCheck = (options) ->
       emElement = undefined
       emElement = document.createElement("div")
       emElement.style.width = "1em"
+      emElement.style.position = "absolute"
       document.body.appendChild emElement
-      value * emElement.offsetWidth
+      px = value * emElement.offsetWidth
+      document.body.removeChild(elElement)
+
+      px
 
     getPXValue = (width, unit) ->
       value = undefined
@@ -53,6 +57,7 @@ window.mediaCheck = (options) ->
           value = convertEmToPx(width)
         else
           value = width
+      value
 
     # Create list of breakpoints
     for i of options
