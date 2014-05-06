@@ -12,11 +12,11 @@ module.exports = (grunt) ->
 
       javascript:
         files: ["js/mediaCheck.js"]
-        tasks: ["uglify", "usebanner"]
+        tasks: ["uglify"]
 
       coffeescript:
         files: ["coffee/**/*.coffee"]
-        tasks: "coffee"
+        tasks: ["coffee", "usebanner"]
 
     coffee:
       compile:
@@ -25,6 +25,16 @@ module.exports = (grunt) ->
 
     uglify:
       dist:
+        options:
+          banner: """
+          /*
+            <%= pkg.name %>
+            <%= pkg.homepage %>
+
+            Version: <%= pkg.version %>, <%= grunt.template.today("dd-mm-yyyy") %>
+            Author: Rob Tarr (http://twitter.com/robtarr)
+          */
+          """
         files:
           "js/mediaCheck-min.js": "js/mediaCheck.js"
 
@@ -48,7 +58,7 @@ module.exports = (grunt) ->
           linebreak: true
 
         files:
-          src: [ 'js/mediaCheck.js', 'js/mediaCheck-min.js' ]
+          src: [ 'js/mediaCheck.js' ]
 
 
   grunt.loadNpmTasks "grunt-contrib-watch"
@@ -57,6 +67,6 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-banner"
 
   # Default task
-  grunt.registerTask "default", [ "coffee", "uglify", "usebanner", "watch" ]
+  grunt.registerTask "default", [ "coffee", "usebanner", "watch" ]
 
-  grunt.registerTask "dist", [ "coffee", "uglify", "usebanner" ]
+  grunt.registerTask "dist", [ "coffee", "usebanner" ]

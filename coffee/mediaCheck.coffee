@@ -31,7 +31,7 @@ window.mediaCheck = (options) ->
     # pageWidth is initialized during initial match
     pageWidth = undefined
     breakpoints = {}
-    options.debounce = options.debounce || 250
+
     mqChange = (mq, options) ->
       if mq.matches
         options.entry() if typeof options.entry is "function" and (breakpoints[options.media] is false or not breakpoints[options.media]?)
@@ -56,36 +56,12 @@ window.mediaCheck = (options) ->
         else
           value = width
 
-    ###
-    Throttle function from @rem http://remysharp.com/2010/07/21/throttling-function-calls/
-    ###
-    throttle = (fn, threshhold, scope) ->
-      threshhold or (threshhold = 250)
-      last = undefined
-      deferTimer = undefined
-      ->
-        context = scope or this
-        now = +new Date
-        args = arguments
-        if last and now < last + threshhold
-          # hold on to it
-          clearTimeout deferTimer
-          deferTimer = setTimeout(->
-            last = now
-            fn.apply context, args
-          , threshhold)
-        else
-          last = now
-          fn.apply context, args
-
-
     # Create list of breakpoints
     for i of options
       breakpoints[options.media] = null
 
     # No matchMedia support
     mmListener = ->
-      console.log "fire"
       parts = options.media.match(/\((.*)-.*:\s*([\d\.]*)(.*)\)/)
       constraint = parts[1]
       value = getPXValue(parseInt(parts[2], 10), parts[3])
@@ -102,9 +78,9 @@ window.mediaCheck = (options) ->
         pageWidth = clientWidth
 
     if window.addEventListener
-      window.addEventListener "resize", throttle(mmListener, options.debounce)
+      window.addEventListener "resize", mmListener
     else
       if window.attachEvent
-        window.attachEvent "onresize", throttle(mmListener, options.debounce)
+        window.attachEvent "onresize", mmListener
 
     mmListener()

@@ -1,6 +1,6 @@
 $(function() {
   var $test = $('test');
-  
+
   mediaCheck({
     media: '(max-width: 420px)',
     entry: function() {
@@ -10,7 +10,7 @@ $(function() {
       console.log('leaving 420');
     }
   });
-  
+
   mediaCheck({
     media: '(max-width: 600px)',
     entry: function() {
@@ -20,7 +20,7 @@ $(function() {
       $('#test').text('This is a larger screen.');
     }
   });
-  
+
   mediaCheck({
     media: '(max-width: 40em)',
     entry: function() {
@@ -30,12 +30,12 @@ $(function() {
       console.log('leaving 40em');
     }
   });
-  
+
   mediaCheck({
     media: '(max-width: 50em)',
     both: function() {
       console.log('starting or ending 50em');
     }
   });
-  
+
 });
