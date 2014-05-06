@@ -5,7 +5,7 @@ window.mediaCheck = (options) ->
   convertEmToPx = undefined
   getPXValue = undefined
   matchMedia = window.matchMedia isnt `undefined` and !!window.matchMedia("").addListener
-  if matchMedia && false
+  if matchMedia
     mqChange = (mq, options) ->
       if mq.matches
         options.entry()  if typeof options.entry is "function"
