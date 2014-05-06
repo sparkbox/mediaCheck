@@ -6,12 +6,12 @@
 
   http://github.com/sparkbox/mediaCheck
 
-  Version: 0.3.0, 06-05-2014
+  Version: 0.3.1, 06-05-2014
   Author: Rob Tarr (http://twitter.com/robtarr)
 */
 (function() {
   window.mediaCheck = function(options) {
-    var breakpoints, convertEmToPx, createListener, getPXValue, i, matchMedia, mmListener, mq, mqChange, pageWidth, throttle;
+    var breakpoints, convertEmToPx, createListener, getPXValue, i, matchMedia, mmListener, mq, mqChange, pageWidth;
     mq = void 0;
     mqChange = void 0;
     createListener = void 0;
@@ -48,7 +48,6 @@
     } else {
       pageWidth = void 0;
       breakpoints = {};
-      options.debounce = options.debounce || 250;
       mqChange = function(mq, options) {
         if (mq.matches) {
           if (typeof options.entry === "function" && (breakpoints[options.media] === false || (breakpoints[options.media] == null))) {
@@ -82,38 +81,11 @@
             return value = width;
         }
       };
-
-      /*
-      Throttle function from @rem http://remysharp.com/2010/07/21/throttling-function-calls/
-       */
-      throttle = function(fn, threshhold, scope) {
-        var deferTimer, last;
-        threshhold || (threshhold = 250);
-        last = void 0;
-        deferTimer = void 0;
-        return function() {
-          var args, context, now;
-          context = scope || this;
-          now = +(new Date);
-          args = arguments;
-          if (last && now < last + threshhold) {
-            clearTimeout(deferTimer);
-            return deferTimer = setTimeout(function() {
-              last = now;
-              return fn.apply(context, args);
-            }, threshhold);
-          } else {
-            last = now;
-            return fn.apply(context, args);
-          }
-        };
-      };
       for (i in options) {
         breakpoints[options.media] = null;
       }
       mmListener = function() {
         var clientWidth, constraint, fakeMatchMedia, parts, value;
-        console.log("fire");
         parts = options.media.match(/\((.*)-.*:\s*([\d\.]*)(.*)\)/);
         constraint = parts[1];
         value = getPXValue(parseInt(parts[2], 10), parts[3]);
@@ -126,10 +98,10 @@
         }
       };
       if (window.addEventListener) {
-        window.addEventListener("resize", throttle(mmListener, options.debounce));
+        window.addEventListener("resize", mmListener);
       } else {
         if (window.attachEvent) {
-          window.attachEvent("onresize", throttle(mmListener, options.debounce));
+          window.attachEvent("onresize", mmListener);
         }
       }
       return mmListener();
