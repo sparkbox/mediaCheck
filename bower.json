@@ -1,8 +1,12 @@
 {
   "name": "mediaCheck",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "authors": [
-    { "name": "Rob Tarr", "email": "rob@robtarr.net"," homepage": "http://robtarr.net" }
+    {
+      "name": "Rob Tarr",
+      "email": "rob@robtarr.net",
+      " homepage": "http://robtarr.net"
+    }
   ],
   "homepage": "https://github.com/sparkbox/mediaCheck",
   "repository": {
