@@ -1,8 +1,13 @@
 {
-  "name": "MediaCheck",
-  "version": "0.2.2",
+  "name": "mediaCheck",
+  "version": "0.3.0",
+  "homepage": "http://github.com/sparkbox/mediaCheck",
   "devDependencies": {
     "grunt": "~0.4",
-    "grunt-contrib-uglify": "~0.2.1"
+    "grunt-contrib-uglify": "~0.2.1",
+    "grunt-contrib-coffee": "^0.10.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-banner": "^0.2.2"
   }
 }
