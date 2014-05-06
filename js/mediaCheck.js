@@ -1,13 +1,24 @@
+/*                    _ _        ____ _               _
+   _ __ ___   ___  __| (_) __ _ / ___| |__   ___  ___| | __
+  | '_ ` _ \ / _ \/ _` | |/ _` | |   | '_ \ / _ \/ __| |/ /
+  | | | | | |  __/ (_| | | (_| | |___| | | |  __/ (__|   <
+  |_| |_| |_|\___|\__,_|_|\__,_|\____|_| |_|\___|\___|_|\_\
+
+  http://github.com/sparkbox/mediaCheck
+
+  Version: 0.3.0, 06-05-2014
+  Author: Rob Tarr (http://twitter.com/robtarr)
+*/
 (function() {
   window.mediaCheck = function(options) {
-    var breakpoints, convertEmToPx, createListener, getPXValue, i, matchMedia, mmListener, mq, mqChange, pageWidth;
+    var breakpoints, convertEmToPx, createListener, getPXValue, i, matchMedia, mmListener, mq, mqChange, pageWidth, throttle;
     mq = void 0;
     mqChange = void 0;
     createListener = void 0;
     convertEmToPx = void 0;
     getPXValue = void 0;
     matchMedia = window.matchMedia !== undefined && !!window.matchMedia("").addListener;
-    if (matchMedia) {
+    if (matchMedia && false) {
       mqChange = function(mq, options) {
         if (mq.matches) {
           if (typeof options.entry === "function") {
@@ -37,6 +48,7 @@
     } else {
       pageWidth = void 0;
       breakpoints = {};
+      options.debounce = options.debounce || 250;
       mqChange = function(mq, options) {
         if (mq.matches) {
           if (typeof options.entry === "function" && (breakpoints[options.media] === false || (breakpoints[options.media] == null))) {
@@ -70,11 +82,38 @@
             return value = width;
         }
       };
+
+      /*
+      Throttle function from @rem http://remysharp.com/2010/07/21/throttling-function-calls/
+       */
+      throttle = function(fn, threshhold, scope) {
+        var deferTimer, last;
+        threshhold || (threshhold = 250);
+        last = void 0;
+        deferTimer = void 0;
+        return function() {
+          var args, context, now;
+          context = scope || this;
+          now = +(new Date);
+          args = arguments;
+          if (last && now < last + threshhold) {
+            clearTimeout(deferTimer);
+            return deferTimer = setTimeout(function() {
+              last = now;
+              return fn.apply(context, args);
+            }, threshhold);
+          } else {
+            last = now;
+            return fn.apply(context, args);
+          }
+        };
+      };
       for (i in options) {
         breakpoints[options.media] = null;
       }
       mmListener = function() {
         var clientWidth, constraint, fakeMatchMedia, parts, value;
+        console.log("fire");
         parts = options.media.match(/\((.*)-.*:\s*([\d\.]*)(.*)\)/);
         constraint = parts[1];
         value = getPXValue(parseInt(parts[2], 10), parts[3]);
@@ -87,10 +126,10 @@
         }
       };
       if (window.addEventListener) {
-        window.addEventListener("resize", mmListener);
+        window.addEventListener("resize", throttle(mmListener, options.debounce));
       } else {
         if (window.attachEvent) {
-          window.attachEvent("onresize", mmListener);
+          window.attachEvent("onresize", throttle(mmListener, options.debounce));
         }
       }
       return mmListener();
