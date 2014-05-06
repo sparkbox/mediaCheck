@@ -1,6 +1,6 @@
 {
   "name": "mediaCheck",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "homepage": "http://github.com/sparkbox/mediaCheck",
   "devDependencies": {
     "grunt": "~0.4",
