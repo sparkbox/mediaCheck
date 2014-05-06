@@ -6,19 +6,19 @@
 
   http://github.com/sparkbox/mediaCheck
 
-  Version: 0.4.0, 06-05-2014
+  Version: 0.4.1, 06-05-2014
   Author: Rob Tarr (http://twitter.com/robtarr)
 */
 (function() {
   window.mediaCheck = function(options) {
-    var breakpoints, convertEmToPx, createListener, getPXValue, i, matchMedia, mmListener, mq, mqChange, pageWidth;
+    var breakpoints, convertEmToPx, createListener, getPXValue, hasMatchMedia, i, mmListener, mq, mqChange;
     mq = void 0;
     mqChange = void 0;
     createListener = void 0;
     convertEmToPx = void 0;
     getPXValue = void 0;
-    matchMedia = window.matchMedia !== undefined && !!window.matchMedia("").addListener;
-    if (matchMedia) {
+    hasMatchMedia = window.matchMedia !== undefined && !!window.matchMedia("").addListener;
+    if (hasMatchMedia) {
       mqChange = function(mq, options) {
         if (mq.matches) {
           if (typeof options.entry === "function") {
@@ -46,7 +46,6 @@
       };
       return createListener();
     } else {
-      pageWidth = void 0;
       breakpoints = {};
       mqChange = function(mq, options) {
         if (mq.matches) {
@@ -64,38 +63,40 @@
         return breakpoints[options.media] = mq.matches;
       };
       convertEmToPx = function(value) {
-        var emElement;
+        var emElement, px;
         emElement = void 0;
         emElement = document.createElement("div");
         emElement.style.width = "1em";
+        emElement.style.position = "absolute";
         document.body.appendChild(emElement);
-        return value * emElement.offsetWidth;
+        px = value * emElement.offsetWidth;
+        document.body.removeChild(emElement);
+        return px;
       };
       getPXValue = function(width, unit) {
         var value;
         value = void 0;
         switch (unit) {
           case "em":
-            return value = convertEmToPx(width);
+            value = convertEmToPx(width);
+            break;
           default:
-            return value = width;
+            value = width;
         }
+        return value;
       };
       for (i in options) {
         breakpoints[options.media] = null;
       }
       mmListener = function() {
-        var clientWidth, constraint, fakeMatchMedia, parts, value;
+        var constraint, fakeMatchMedia, parts, value, windowWidth;
         parts = options.media.match(/\((.*)-.*:\s*([\d\.]*)(.*)\)/);
         constraint = parts[1];
         value = getPXValue(parseInt(parts[2], 10), parts[3]);
         fakeMatchMedia = {};
-        clientWidth = document.documentElement.clientWidth;
-        if (pageWidth !== clientWidth) {
-          fakeMatchMedia.matches = constraint === "max" && value > clientWidth || constraint === "min" && value < clientWidth;
-          mqChange(fakeMatchMedia, options);
-          return pageWidth = clientWidth;
-        }
+        windowWidth = window.outerWidth || document.documentElement.clientWidth;
+        fakeMatchMedia.matches = constraint === "max" && value > windowWidth || constraint === "min" && value < windowWidth;
+        return mqChange(fakeMatchMedia, options);
       };
       if (window.addEventListener) {
         window.addEventListener("resize", mmListener);
