@@ -11,14 +11,14 @@
 */
 (function() {
   window.mediaCheck = function(options) {
-    var breakpoints, convertEmToPx, createListener, getPXValue, i, matchMedia, mmListener, mq, mqChange, pageWidth;
+    var breakpoints, convertEmToPx, createListener, getPXValue, hasMatchMedia, i, mmListener, mq, mqChange;
     mq = void 0;
     mqChange = void 0;
     createListener = void 0;
     convertEmToPx = void 0;
     getPXValue = void 0;
-    matchMedia = window.matchMedia !== undefined && !!window.matchMedia("").addListener;
-    if (matchMedia) {
+    hasMatchMedia = window.matchMedia !== undefined && !!window.matchMedia("").addListener;
+    if (hasMatchMedia) {
       mqChange = function(mq, options) {
         if (mq.matches) {
           if (typeof options.entry === "function") {
@@ -46,7 +46,6 @@
       };
       return createListener();
     } else {
-      pageWidth = void 0;
       breakpoints = {};
       mqChange = function(mq, options) {
         if (mq.matches) {
@@ -85,17 +84,14 @@
         breakpoints[options.media] = null;
       }
       mmListener = function() {
-        var clientWidth, constraint, fakeMatchMedia, parts, value;
+        var constraint, fakeMatchMedia, parts, value, windowWidth;
         parts = options.media.match(/\((.*)-.*:\s*([\d\.]*)(.*)\)/);
         constraint = parts[1];
         value = getPXValue(parseInt(parts[2], 10), parts[3]);
         fakeMatchMedia = {};
-        clientWidth = document.documentElement.clientWidth;
-        if (pageWidth !== clientWidth) {
-          fakeMatchMedia.matches = constraint === "max" && value > clientWidth || constraint === "min" && value < clientWidth;
-          mqChange(fakeMatchMedia, options);
-          return pageWidth = clientWidth;
-        }
+        windowWidth = window.outerWidth || document.documentElement.clientWidth;
+        fakeMatchMedia.matches = constraint === "max" && value > windowWidth || constraint === "min" && value < windowWidth;
+        return mqChange(fakeMatchMedia, options);
       };
       if (window.addEventListener) {
         window.addEventListener("resize", mmListener);

@@ -4,8 +4,9 @@ window.mediaCheck = (options) ->
   createListener = undefined
   convertEmToPx = undefined
   getPXValue = undefined
-  matchMedia = window.matchMedia isnt `undefined` and !!window.matchMedia("").addListener
-  if matchMedia
+  hasMatchMedia = window.matchMedia isnt `undefined` and !!window.matchMedia("").addListener
+
+  if hasMatchMedia
     mqChange = (mq, options) ->
       if mq.matches
         options.entry()  if typeof options.entry is "function"
@@ -27,9 +28,6 @@ window.mediaCheck = (options) ->
 
     createListener()
   else
-
-    # pageWidth is initialized during initial match
-    pageWidth = undefined
     breakpoints = {}
 
     mqChange = (mq, options) ->
@@ -66,16 +64,12 @@ window.mediaCheck = (options) ->
       constraint = parts[1]
       value = getPXValue(parseInt(parts[2], 10), parts[3])
       fakeMatchMedia = {}
-      clientWidth = document.documentElement.clientWidth
+      windowWidth = window.outerWidth || document.documentElement.clientWidth
 
-      # scope this to width changes to prevent small-screen scrolling (browser chrome off-screen)
-      #   from triggering a change
-      unless pageWidth is clientWidth
-        fakeMatchMedia.matches = constraint is "max" and value > clientWidth or constraint is "min" and value < clientWidth
-        mqChange fakeMatchMedia, options
+      fakeMatchMedia.matches = constraint is "max" and value > windowWidth or constraint is "min" and value < windowWidth
 
-        # reset pageWidth
-        pageWidth = clientWidth
+      mqChange fakeMatchMedia, options
+
 
     if window.addEventListener
       window.addEventListener "resize", mmListener
