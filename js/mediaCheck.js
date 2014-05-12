@@ -70,7 +70,7 @@
         emElement.style.position = "absolute";
         document.body.appendChild(emElement);
         px = value * emElement.offsetWidth;
-        document.body.removeChild(elElement);
+        document.body.removeChild(emElement);
         return px;
       };
       getPXValue = function(width, unit) {

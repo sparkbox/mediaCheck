@@ -46,7 +46,7 @@ window.mediaCheck = (options) ->
       emElement.style.position = "absolute"
       document.body.appendChild emElement
       px = value * emElement.offsetWidth
-      document.body.removeChild(elElement)
+      document.body.removeChild(emElement)
 
       px
 
