@@ -6,7 +6,7 @@
 
   http://github.com/sparkbox/mediaCheck
 
-  Version: 0.4.3, 12-05-2014
+  Version: 0.4.3, 17-06-2014
   Author: Rob Tarr (http://twitter.com/robtarr)
 */
 (function() {
@@ -94,7 +94,7 @@
         constraint = parts[1];
         value = getPXValue(parseInt(parts[2], 10), parts[3]);
         fakeMatchMedia = {};
-        windowWidth = window.outerWidth || document.documentElement.clientWidth;
+        windowWidth = window.innerWidth || document.documentElement.clientWidth;
         fakeMatchMedia.matches = constraint === "max" && value > windowWidth || constraint === "min" && value < windowWidth;
         return mqChange(fakeMatchMedia, options);
       };
