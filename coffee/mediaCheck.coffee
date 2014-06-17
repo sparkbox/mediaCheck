@@ -69,7 +69,7 @@ window.mediaCheck = (options) ->
       constraint = parts[1]
       value = getPXValue(parseInt(parts[2], 10), parts[3])
       fakeMatchMedia = {}
-      windowWidth = window.outerWidth || document.documentElement.clientWidth
+      windowWidth = window.innerWidth || document.documentElement.clientWidth
 
       fakeMatchMedia.matches = constraint is "max" and value > windowWidth or constraint is "min" and value < windowWidth
 
