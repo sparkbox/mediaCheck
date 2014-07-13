@@ -1,18 +1,19 @@
-$(function() {
-  var $demo = $('.demo-area');
+var $demo = $('.demo-area');
 
-  function smallScreen() {
+  function smallScreen(mq) {
+    if (mq.media)
     $demo.text('This is a smaller screen.');
     $demo.animate({
       backgroundColor: '#19ae2b'
     });
   }
 
-  function largeScreen() {
+  function largeScreen(mq) {
     if ($(document).width() >= 900) {
-      // Note: Because this gets called by both media query checks,
+      // Note: Because this gets called by both mediaquery checks,
       // it needs to make sure that it actually needs to apply so
       // it doesn't overwrite the smallScreen message.
+
       $demo.text('This is a larger screen.');
       $demo.animate({
         backgroundColor: '#d3811e'
@@ -20,7 +21,7 @@ $(function() {
     }
   }
 
-  function dude() {
+  function dude(mq) {
     $demo.text("Dude, that's a really big screen.");
     $demo.animate({
       backgroundColor: '#6814d3'
@@ -34,10 +35,11 @@ $(function() {
   });
 
   mediaCheck({
-    media: '(min-width: 1400px)',
+    media: '(min-width: 1200px)',
     entry: dude,
     exit: largeScreen
   });
+
 
   function switchExamples(e) {
     var $target = $(e.target),
@@ -52,4 +54,3 @@ $(function() {
 
   $('.exampleList-link').on("click", switchExamples);
 });
-

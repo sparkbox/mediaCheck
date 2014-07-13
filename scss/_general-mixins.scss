@@ -1,0 +1,33 @@
+@mixin rem( $property, $a:0, $b:$a, $c:$a, $d:$b ) {
+  $base-font-multiplier: 1 !default;
+
+// Font Families
+  @if ( $property == "font-size" ) {
+    // $a is the font size
+    // %b is the keyword
+    @if ( $a != $b ) {
+      font-size: $b;
+    }
+    @else {
+      font-size: $a * $base-font-multiplier * 16px;
+    }
+    font-size: $a * 1rem;
+  } @else {
+    $apx: $a * $base-font-multiplier * 16px;
+    $bpx: $b * $base-font-multiplier * 16px;
+    $cpx: $c * $base-font-multiplier * 16px;
+    $dpx: $d * $base-font-multiplier * 16px;
+    $arem: $a * 1rem;
+    $brem: $b * 1rem;
+    $crem: $c * 1rem;
+    $drem: $d * 1rem;
+
+    @if ( $property == "padding" or $property == "margin" ){
+      #{$property}: $apx $bpx $cpx $dpx;
+      #{$property}: $arem $brem $crem $drem;
+    } @else {
+      #{$property}: $apx;
+      #{$property}: $arem;
+    }
+  }
+}

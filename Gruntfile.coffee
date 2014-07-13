@@ -18,10 +18,29 @@ module.exports = (grunt) ->
         files: ["coffee/**/*.coffee"]
         tasks: ["coffee", "usebanner"]
 
+      stylesheets:
+        files: ["scss/*.scss"]
+        tasks: ["compass"]
+
     coffee:
       compile:
         files:
           "js/mediaCheck.js": ["coffee/mediaCheck.coffee"]
+
+    compass:
+      dev:
+        options:
+          environment: 'dev'
+          sassDir: 'scss'
+          cssDir: 'css'
+          outputStyle: 'expanded'
+          noLineComments: true
+      dist:
+        options:
+          environment: 'production'
+          sassDir: 'scss'
+          cssDir: 'css'
+          outputStyle: 'compact'
 
     uglify:
       dist:
@@ -77,10 +96,11 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-contrib-uglify"
   grunt.loadNpmTasks "grunt-contrib-coffee"
+  grunt.loadNpmTasks "grunt-contrib-compass"
   grunt.loadNpmTasks "grunt-banner"
   grunt.loadNpmTasks "grunt-bump"
 
   # Default task
-  grunt.registerTask "default", [ "coffee", "usebanner", "watch" ]
+  grunt.registerTask "default", [ "coffee", "compass", "usebanner", "watch" ]
 
-  grunt.registerTask "dist", [ "coffee", "usebanner" ]
+  grunt.registerTask "dist", [ "coffee", "compass", "usebanner" ]

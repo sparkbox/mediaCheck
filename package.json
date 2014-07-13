@@ -9,6 +9,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-contrib-concat": "^0.4.0",
     "grunt-banner": "^0.2.2",
-    "grunt-bump": "0.0.14"
+    "grunt-bump": "0.0.14",
+    "grunt-contrib-compass": "^0.9.0"
   }
 }

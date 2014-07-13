@@ -1,0 +1,21 @@
+%icon {
+  height: 45px;
+  padding-left: 60px;
+  background-repeat: no-repeat;
+  line-height: 37px;
+  font-size: 1.1em;
+
+  @media (min-width: 42.5em) {
+    font-size: 1.5em;
+  }
+}
+
+.icon-bower {
+  @extend %icon;
+  background-image: url('../images/icon-bower.jpg');
+}
+
+.icon-github {
+  @extend %icon;
+  background-image: url('../images/icon-github.png');
+}

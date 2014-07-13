@@ -1,0 +1,64 @@
+body {
+  font-family: avenir, sans-serif;
+  color: #686868;
+  background: url('../images/congruent_outline.png');
+  margin: 0;
+}
+
+a {
+  color: #686868;
+}
+
+.content-wrapper {
+  @include box-sizing('border-box');
+  background: #fff;
+  padding: 1em;
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+
+  @media (min-width: $bp-medium) {
+    padding: 2em;
+  }
+}
+
+.main-heading {
+  font-size: 2.5em;
+  text-align: center;
+  margin: 0;
+
+  @media (min-width: $bp-medium) {
+    font-size: 3em;
+  }
+}
+
+.tagline {
+  text-align: center;
+  margin: 0;
+}
+
+.description {
+  background: #eee;
+  padding: 2em;
+}
+
+.demo-area {
+  color: #fff;
+  height: 3em;
+  max-width: 800px;
+  margin: 1.5em auto;
+  border: 1px solid #686868;
+  text-align: center;
+  font-size: 1.7rem;
+  line-height: 3em;
+
+  @media (min-width: $bp-medium) {
+    font-size: 2rem;
+    line-height: 2.9;
+    width: 80%;
+  }
+}
+
+.option {
+  border-bottom: 1px solid #686868;
+}

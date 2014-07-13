@@ -11,17 +11,163 @@
   <title></title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <link rel="stylesheet" href="stylesheets/base.css">
+  <link rel="stylesheet" href="css/base.css">
   <!--[if lte IE 8]>
-  <link rel="stylesheet" href="stylesheets/ie.css">
+  <link rel="stylesheet" href="css/ie.css">
   <![endif]-->
 </head>
 <body>
-  <div id="test">
+  <div class="content-wrapper">
+    <header>
+      <h1 class="main-heading">mediaCheck</h1>
+      <p class="tagline">allows you to control your JavaScript based on your media query definitions</p>
+    </header>
 
+    <section>
+      <p class="description">mediaCheck is a simple wrapper around matchMedia to run code on entry and exit from media queries. It also uses browser resize as a fallback for browsers that don't support matchMedia.</p>
+
+      <div>
+        <ul class="getItList">
+          <li class="getItList-item icon-bower">
+            <code>
+              bower install mediaCheck
+            </code>
+          </li>
+          <li class="getItList-item icon-github">
+            <a href="//github.com/sparkbox/mediaCheck" class="download">download</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="demo-area"></div>
+
+      <div>
+        <h2>Examples</h2>
+
+        <ul class="exampleList">
+          <li class="exampleList-item active">
+            <h3 class="exampleList-heading">
+              <a href="#simple" class="exampleList-link">Simple</a>
+            </h3>
+          </li>
+          <li class="exampleList-item">
+            <h3 class="exampleList-heading">
+              <a href="#complex" class="exampleList-link">More Complex</a>
+            </h3>
+          </li>
+        </ul>
+<div class="highlight example active" id="simple"><pre class="hll">
+<code>
+  <span class="nx">mediaCheck</span><span class="p">({</span>
+    <span class="nx">media</span><span class="o">:</span> <span class="s1">'(max-width: 420px)'</span><span class="p">,</span>
+    <span class="nx">entry</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'starting 420'</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="nx">exit</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'leaving 420'</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="nx">both</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'changing state'</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+</code>
+</pre>
+</div>
+
+<div class="highlight example" id="complex"><pre class="hll">
+<code>
+  <span class="kd">var</span> <span class="nx">$demo</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.demo-area&#39;</span><span class="p">);</span>
+
+  <span class="kd">function</span> <span class="nx">smallScreen</span><span class="p">(</span><span class="nx">mq</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">mq</span><span class="p">.</span><span class="nx">media</span><span class="p">)</span>
+    <span class="nx">$demo</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;This is a smaller screen.&#39;</span><span class="p">);</span>
+    <span class="nx">$demo</span><span class="p">.</span><span class="nx">animate</span><span class="p">({</span>
+      <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">&#39;#19ae2b&#39;</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="nx">largeScreen</span><span class="p">(</span><span class="nx">mq</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">width</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">900</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// Note: Because this gets called by both media query checks,</span>
+      <span class="c1">// it needs to make sure that it actually needs to apply so</span>
+      <span class="c1">// it doesn&#39;t overwrite the smallScreen message.</span>
+      <span class="nx">$demo</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;This is a larger screen.&#39;</span><span class="p">);</span>
+      <span class="nx">$demo</span><span class="p">.</span><span class="nx">animate</span><span class="p">({</span>
+        <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">&#39;#d3811e&#39;</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="nx">dude</span><span class="p">(</span><span class="nx">mq</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$demo</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s2">&quot;Dude, that&#39;s a really big screen.&quot;</span><span class="p">);</span>
+    <span class="nx">$demo</span><span class="p">.</span><span class="nx">animate</span><span class="p">({</span>
+      <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">&#39;#6814d3&#39;</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">mediaCheck</span><span class="p">({</span>
+    <span class="nx">media</span><span class="o">:</span> <span class="s1">&#39;(min-width: 900px)&#39;</span><span class="p">,</span>
+    <span class="nx">entry</span><span class="o">:</span> <span class="nx">largeScreen</span><span class="p">,</span>
+    <span class="nx">exit</span><span class="o">:</span> <span class="nx">smallScreen</span>
+  <span class="p">});</span>
+
+  <span class="nx">mediaCheck</span><span class="p">({</span>
+    <span class="nx">media</span><span class="o">:</span> <span class="s1">&#39;(min-width: 1400px)&#39;</span><span class="p">,</span>
+    <span class="nx">entry</span><span class="o">:</span> <span class="nx">dude</span><span class="p">,</span>
+    <span class="nx">exit</span><span class="o">:</span> <span class="nx">largeScreen</span>
+  <span class="p">});</span>
+</code>
+</pre>
+</div>
+      </div>
+
+      <div>
+        <h2>Options</h2>
+
+        <article class="option">
+          <h3>media</h3>
+          <p>Type: <code>string</code></p>
+          <p>This is the mediaquery that will trigger the specified action. It should be in the form:</p>
+
+          <ul class="task-list highlight">
+            <li><code>(min-width: 420px)</code></li>
+            <li><code>(min-width: 35em)</code></li>
+            <li><code>(max-width: 800px)</code></li>
+            <li><code>(max-width: 60em)</code></li>
+          </ul>
+        </article>
+
+        <article class="option">
+          <h3>entry</h3>
+          <p>Type: <code>function</code></p>
+          <p>Params: <code>mq</code> The media query object</p>
+          <p>This function will execute once when the mediaquery becomes <strong>active</strong>.</p>
+        </article>
+
+        <article class="option">
+          <h3>exit</h3>
+          <p>Type: <code>function</code></p>
+          <p>Params: <code>mq</code> The media query object</p>
+          <p>This function will execute once when the mediaquery becomes <strong>inactive</strong>.</p>
+        </article>
+
+        <article class="option">
+          <h3>both</h3>
+          <p>Type: <code>function</code></p>
+          <p>Params: <code>mq</code> The media query object</p>
+          <p>This function will execute once when the mediaquery <strong>changes</strong> state.</p>
+        </article>
+      </div>
+
+      <footer>
+        <h2>Legal Stuff</h2>
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+      </footer>
+    </section>
   </div>
 
   <script src="js/jquery.js" ></script>
+  <script src="js/jquery.color.js" ></script>
   <script src="js/mediaCheck.js"></script>
   <script src="js/demo.js"></script>
 </body>
