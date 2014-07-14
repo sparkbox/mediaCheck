@@ -9,9 +9,10 @@ window.mediaCheck = (options) ->
   if hasMatchMedia
     mqChange = (mq, options) ->
       if mq.matches
-        options.entry()  if typeof options.entry is "function"
-      else options.exit()  if typeof options.exit is "function"
-      options.both()  if typeof options.both is "function"
+        options.entry(mq) if typeof options.entry is "function"
+      else
+        options.exit(mq) if typeof options.exit is "function"
+      options.both(mq) if typeof options.both is "function"
 
 
     # Has matchMedia support
@@ -32,11 +33,11 @@ window.mediaCheck = (options) ->
 
     mqChange = (mq, options) ->
       if mq.matches
-        options.entry() if typeof options.entry is "function" and (breakpoints[options.media] is false or not breakpoints[options.media]?)
+        options.entry(mq) if typeof options.entry is "function" and (breakpoints[options.media] is false or not breakpoints[options.media]?)
       else
-        options.exit() if typeof options.exit is "function" and (breakpoints[options.media] is true or not breakpoints[options.media]?)
+        options.exit(mq) if typeof options.exit is "function" and (breakpoints[options.media] is true or not breakpoints[options.media]?)
 
-      options.both()  if typeof options.both is "function"
+      options.both(mq) if typeof options.both is "function"
       breakpoints[options.media] = mq.matches
 
     convertEmToPx = (value) ->

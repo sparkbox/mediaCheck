@@ -60,11 +60,25 @@ module.exports = (grunt) ->
         files:
           src: [ 'js/mediaCheck.js' ]
 
+    bump:
+      options:
+        files: ['package.json', 'bower.json'],
+        updateConfigs: ['pkg'],
+        commit: true,
+        commitMessage: 'Release v%VERSION%',
+        commitFiles: ['package.json', 'bower.json'],
+        createTag: true,
+        tagName: 'v%VERSION%',
+        tagMessage: 'Version %VERSION%',
+        push: true,
+        pushTo: 'upstream',
+        gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d'
 
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-contrib-uglify"
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-banner"
+  grunt.loadNpmTasks "grunt-bump"
 
   # Default task
   grunt.registerTask "default", [ "coffee", "usebanner", "watch" ]

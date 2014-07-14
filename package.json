@@ -8,6 +8,7 @@
     "grunt-contrib-coffee": "^0.10.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-contrib-concat": "^0.4.0",
-    "grunt-banner": "^0.2.2"
+    "grunt-banner": "^0.2.2",
+    "grunt-bump": "0.0.14"
   }
 }

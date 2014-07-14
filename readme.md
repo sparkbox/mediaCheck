@@ -10,8 +10,8 @@
 This is a simple wrapper around matchMedia to run code on entry and exit from media queries. It also uses browser resize as a fallback for browsers that don't support matchMedia.
 
 
-##Demo
-There is a really basic example here: http://sparkbox.github.com/mediaCheck/
+## Demo
+There are two examples here: http://sparkbox.github.com/mediaCheck/
 
 
 #### media
@@ -40,7 +40,7 @@ Type: `function`
 This function will execute once when the mediaquery **changes** state.
 
 
-##Usage Example:
+## Usage Example:
 
 ```javascript
 mediaCheck({
@@ -57,4 +57,6 @@ mediaCheck({
 });
 ```
 
-
+## Change History
+ - 0.4.5
+   - Passing `mq` to `entry`, `exit`, and `both`

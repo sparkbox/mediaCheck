@@ -6,7 +6,18 @@
 
   http://github.com/sparkbox/mediaCheck
 
-  Version: 0.4.4, 17-06-2014
+  Version: 0.4.5, 14-07-2014
+  Author: Rob Tarr (http://twitter.com/robtarr)
+*/
+/*                    _ _        ____ _               _
+   _ __ ___   ___  __| (_) __ _ / ___| |__   ___  ___| | __
+  | '_ ` _ \ / _ \/ _` | |/ _` | |   | '_ \ / _ \/ __| |/ /
+  | | | | | |  __/ (_| | | (_| | |___| | | |  __/ (__|   <
+  |_| |_| |_|\___|\__,_|_|\__,_|\____|_| |_|\___|\___|_|\_\
+
+  http://github.com/sparkbox/mediaCheck
+
+  Version: 0.4.5, 14-07-2014
   Author: Rob Tarr (http://twitter.com/robtarr)
 */
 (function() {
@@ -22,15 +33,15 @@
       mqChange = function(mq, options) {
         if (mq.matches) {
           if (typeof options.entry === "function") {
-            options.entry();
+            options.entry(mq);
           }
         } else {
           if (typeof options.exit === "function") {
-            options.exit();
+            options.exit(mq);
           }
         }
         if (typeof options.both === "function") {
-          return options.both();
+          return options.both(mq);
         }
       };
       createListener = function() {
@@ -50,15 +61,15 @@
       mqChange = function(mq, options) {
         if (mq.matches) {
           if (typeof options.entry === "function" && (breakpoints[options.media] === false || (breakpoints[options.media] == null))) {
-            options.entry();
+            options.entry(mq);
           }
         } else {
           if (typeof options.exit === "function" && (breakpoints[options.media] === true || (breakpoints[options.media] == null))) {
-            options.exit();
+            options.exit(mq);
           }
         }
         if (typeof options.both === "function") {
-          options.both();
+          options.both(mq);
         }
         return breakpoints[options.media] = mq.matches;
       };
