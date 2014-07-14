@@ -9,17 +9,6 @@
   Version: 0.4.5, 14-07-2014
   Author: Rob Tarr (http://twitter.com/robtarr)
 */
-/*                    _ _        ____ _               _
-   _ __ ___   ___  __| (_) __ _ / ___| |__   ___  ___| | __
-  | '_ ` _ \ / _ \/ _` | |/ _` | |   | '_ \ / _ \/ __| |/ /
-  | | | | | |  __/ (_| | | (_| | |___| | | |  __/ (__|   <
-  |_| |_| |_|\___|\__,_|_|\__,_|\____|_| |_|\___|\___|_|\_\
-
-  http://github.com/sparkbox/mediaCheck
-
-  Version: 0.4.5, 14-07-2014
-  Author: Rob Tarr (http://twitter.com/robtarr)
-*/
 (function() {
   window.mediaCheck = function(options) {
     var breakpoints, convertEmToPx, createListener, getPXValue, hasMatchMedia, i, mmListener, mq, mqChange;
