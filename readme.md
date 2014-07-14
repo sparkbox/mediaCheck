@@ -11,7 +11,7 @@ This is a simple wrapper around matchMedia to run code on entry and exit from me
 
 
 ## Demo
-There are two examples here: http://sparkbox.github.com/mediaCheck/
+There are two examples here: http://sparkbox.github.io/mediaCheck/
 
 
 #### media
