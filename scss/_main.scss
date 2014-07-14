@@ -14,11 +14,12 @@ a {
   background: #fff;
   padding: 1em;
   width: 90%;
-  max-width: 800px;
+  max-width: 85%;
   margin: 0 auto;
 
   @media (min-width: $bp-medium) {
-    padding: 2em;
+    padding: 2em 7%;
+    max-width: 75%;
   }
 }
 
@@ -40,25 +41,30 @@ a {
 .description {
   background: #eee;
   padding: 2em;
+  font-size: 1.5em;
 }
 
 .demo-area {
   color: #fff;
-  height: 3em;
-  max-width: 800px;
-  margin: 1.5em auto;
+  height: 4em;
+  margin: .5em auto;
   border: 1px solid #686868;
   text-align: center;
   font-size: 1.7rem;
-  line-height: 3em;
+  line-height: 4em;
 
   @media (min-width: $bp-medium) {
+    height: 5em;
     font-size: 2rem;
-    line-height: 2.9;
-    width: 80%;
+    line-height: 4.9;
   }
 }
 
 .option {
   border-bottom: 1px solid #686868;
+}
+
+.section-heading {
+  margin-top: 2em;
+  font-size: 1.9em;
 }

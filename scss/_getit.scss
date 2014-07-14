@@ -1,26 +1,26 @@
 .getItList {
   list-style: none;
   padding: 0;
+  margin-bottom: 2em;
+  max-width: 37em;
 
   @media (min-width: 50em) {
     margin: 2em auto;
-    width: 80%;
   }
 }
 
 .getItList-item {
   margin: 1em 0 0;
 
-  @media (min-width: 34em) {
+  @media (min-width: 50em) {
     @include box-sizing(border-box);
     display: inline-block;
-    margin: 0;
 
     &.icon-bower {
-      width: 70%;
+      width: 68%;
     }
     &.icon-github {
-      width: 29%;
+      width: 31%;
     }
   }
 }
@@ -46,7 +46,8 @@
   border-color: #5CA941;
   text-decoration: none;
   font-family: helvetica;
-  font-size: 0.6em;
+  font-size: .8em;
   line-height: 1.8;
-  padding: 0 0.6em;
+  padding: 0.2em 0.8em;
+  letter-spacing: 0.02em;
 }

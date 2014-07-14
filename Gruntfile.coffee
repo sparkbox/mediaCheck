@@ -79,6 +79,15 @@ module.exports = (grunt) ->
         files:
           src: [ 'js/mediaCheck.js' ]
 
+    grunticon:
+      svg:
+        files: [
+          expand: true
+          cwd: 'grunticon'
+          src: '*.svg'
+          dest: 'images/icons'
+        ]
+
     bump:
       options:
         files: ['package.json', 'bower.json'],
@@ -98,6 +107,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-compass"
   grunt.loadNpmTasks "grunt-banner"
+  grunt.loadNpmTasks "grunt-grunticon"
   grunt.loadNpmTasks "grunt-bump"
 
   # Default task
