@@ -6,12 +6,12 @@
 
   http://github.com/sparkbox/mediaCheck
 
-  Version: 0.4.5, 14-07-2014
+  Version: 0.4.5, 12-02-2015
   Author: Rob Tarr (http://twitter.com/robtarr)
 */
 (function() {
   window.mediaCheck = function(options) {
-    var breakpoints, convertEmToPx, createListener, getPXValue, hasMatchMedia, i, mmListener, mq, mqChange;
+    var breakpoints, checkQuery, convertEmToPx, createListener, getPXValue, hasMatchMedia, i, mmListener, mq, mqChange;
     mq = void 0;
     mqChange = void 0;
     createListener = void 0;
@@ -88,15 +88,42 @@
       for (i in options) {
         breakpoints[options.media] = null;
       }
-      mmListener = function() {
-        var constraint, fakeMatchMedia, parts, value, windowWidth;
-        parts = options.media.match(/\((.*)-.*:\s*([\d\.]*)(.*)\)/);
+      checkQuery = function(parts) {
+        var constraint, dimension, matches, ratio, value, windowHeight, windowWidth;
         constraint = parts[1];
-        value = getPXValue(parseInt(parts[2], 10), parts[3]);
-        fakeMatchMedia = {};
+        dimension = parts[2];
+        if (parts[4]) {
+          value = getPXValue(parseInt(parts[3], 10), parts[4]);
+        } else {
+          value = parts[3];
+        }
         windowWidth = window.innerWidth || document.documentElement.clientWidth;
-        fakeMatchMedia.matches = constraint === "max" && value > windowWidth || constraint === "min" && value < windowWidth;
-        return mqChange(fakeMatchMedia, options);
+        windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        if (dimension === 'width') {
+          matches = constraint === "max" && value > windowWidth || constraint === "min" && value < windowWidth;
+        } else if (dimension === 'height') {
+          matches = constraint === "max" && value > windowHeight || constraint === "min" && value < windowHeight;
+        } else if (dimension === 'aspect-ratio') {
+          ratio = windowWidth / windowHeight;
+          matches = constraint === "max" && eval(ratio) < eval(value) || constraint === "min" && eval(ratio) > eval(value);
+        }
+        return matches;
+      };
+      mmListener = function() {
+        var matches, media, medias, parts, _i, _len;
+        medias = options.media.split(/\sand\s|,\s/);
+        matches = true;
+        for (_i = 0, _len = medias.length; _i < _len; _i++) {
+          media = medias[_i];
+          parts = media.match(/\((.*?)-(.*?):\s([\d\/]*)(\w*)\)/);
+          if (!checkQuery(parts)) {
+            matches = false;
+          }
+        }
+        return mqChange({
+          media: options.media,
+          matches: matches
+        }, options);
       };
       if (window.addEventListener) {
         window.addEventListener("resize", mmListener);

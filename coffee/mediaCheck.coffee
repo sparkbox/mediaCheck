@@ -64,17 +64,39 @@ window.mediaCheck = (options) ->
     for i of options
       breakpoints[options.media] = null
 
+    checkQuery = (parts) ->
+      constraint = parts[1]
+      dimension = parts[2]
+
+      if parts[4]
+        value = getPXValue(parseInt(parts[3], 10), parts[4])
+      else
+        value = parts[3]
+
+      windowWidth = window.innerWidth || document.documentElement.clientWidth
+      windowHeight = window.innerHeight || document.documentElement.clientHeight
+
+      if dimension == 'width'
+        matches = constraint is "max" and value > windowWidth or constraint is "min" and value < windowWidth
+      else if dimension == 'height'
+        matches = constraint is "max" and value > windowHeight or constraint is "min" and value < windowHeight
+      else if dimension == 'aspect-ratio'
+        ratio = windowWidth / windowHeight;
+
+        matches = constraint is "max" and eval(ratio) < eval(value) or constraint is "min" and eval(ratio) > eval(value)
+
+      return matches
+
     # No matchMedia support
     mmListener = ->
-      parts = options.media.match(/\((.*)-.*:\s*([\d\.]*)(.*)\)/)
-      constraint = parts[1]
-      value = getPXValue(parseInt(parts[2], 10), parts[3])
-      fakeMatchMedia = {}
-      windowWidth = window.innerWidth || document.documentElement.clientWidth
+      medias = options.media.split(/\sand\s|,\s/)
+      matches = true;
 
-      fakeMatchMedia.matches = constraint is "max" and value > windowWidth or constraint is "min" and value < windowWidth
+      for media in medias
+        parts = media.match(/\((.*?)-(.*?):\s([\d\/]*)(\w*)\)/)
+        matches = false unless checkQuery(parts);
 
-      mqChange fakeMatchMedia, options
+      mqChange {media: options.media, matches: matches}, options
 
 
     if window.addEventListener
