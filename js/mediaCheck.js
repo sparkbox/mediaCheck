@@ -6,7 +6,7 @@
 
   http://github.com/sparkbox/mediaCheck
 
-  Version: 0.4.5, 12-02-2015
+  Version: 0.4.6, 12-02-2015
   Author: Rob Tarr (http://twitter.com/robtarr)
 */
 (function() {
