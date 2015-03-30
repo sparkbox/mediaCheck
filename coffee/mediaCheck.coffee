@@ -100,7 +100,7 @@ window.mediaCheck = (options) ->
 
 
     if window.addEventListener
-      window.addEventListener "resize", mmListener
+      window.addEventListener "resize", mmListener, false
     else
       if window.attachEvent
         window.attachEvent "onresize", mmListener
