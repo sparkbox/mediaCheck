@@ -63,3 +63,6 @@ mediaCheck({
    - It also now accepts `[min|max]-aspect-ratio`
  - 0.4.5
    - Passing `mq` to `entry`, `exit`, and `both`
+
+## License
+![Creative Commons Attribution-ShareAlike 3.0 Unported License](http://i.creativecommons.org/l/by-sa/3.0/88x31.png) https://creativecommons.org/licenses/by-sa/3.0/
