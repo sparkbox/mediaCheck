@@ -4,7 +4,7 @@ $(function() {
   function smallScreen() {
     $demo.text('This is a smaller screen.');
     $demo.animate({
-      backgroundColor: '#19ae2b'
+      backgroundColor: '#8A8A8A'
     });
   }
 
@@ -15,7 +15,7 @@ $(function() {
       // it doesn't overwrite the smallScreen message.
       $demo.text('This is a larger screen.');
       $demo.animate({
-        backgroundColor: '#d3811e'
+        backgroundColor: '#557E85'
       });
     }
   }
@@ -23,7 +23,7 @@ $(function() {
   function dude() {
     $demo.text("Dude, that's a really big screen.");
     $demo.animate({
-      backgroundColor: '#6814d3'
+      backgroundColor: '#50B7C8'
     });
   }
 

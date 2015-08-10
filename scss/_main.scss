@@ -1,54 +1,73 @@
 body {
-  font-family: avenir, sans-serif;
+  font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
   color: #686868;
-  background: url('../images/congruent_outline.png');
+  // background: url('../images/congruent_outline.png');
+  background-color: white;
   margin: 0;
 }
 
 a {
-  color: #686868;
+  color: #50B7C8;
+}
+
+code {
+  font-family: Monaco, monospace;
 }
 
 .content-wrapper {
   @include box-sizing('border-box');
-  background: #fff;
-  padding: 1em;
-  width: 90%;
-  max-width: 85%;
+  width: 95%;
+  max-width: 50em;
   margin: 0 auto;
 
-  @media (min-width: $bp-medium) {
-    padding: 2em 7%;
-    max-width: 75%;
-  }
+  // @media (min-width: $bp-medium) {
+  //   padding: 2em 7%;
+  //   max-width: 75%;
+  // }
 }
 
 .main-heading {
-  font-size: 2.5em;
+  font-size: 1em;
+  text-indent: -99999px;
+  overflow: hidden;
   text-align: center;
-  margin: 0;
+  max-width: 40em;
+  margin: 1em auto;
+  background-size: contain;
+  background-position: center center;
 
-  @media (min-width: $bp-medium) {
-    font-size: 3em;
+  @media(min-width: $bp-medium) {
+    margin: 3em auto;
+  }
+
+  &:after {
+    padding-top: (180/964)*100%;
+    content: '';
+    display: block;
   }
 }
 
 .tagline {
+  color: #acacac;
   text-align: center;
   margin: 0;
 }
 
 .description {
-  background: #eee;
-  padding: 2em;
-  font-size: 1.5em;
+  // background: #eee;
+  // padding: 2em;
+  font-size: 1.125em;
+  @media(min-width: $bp-medium) {
+    font-size: 1.5em;
+  }
 }
 
 .demo-area {
   color: #fff;
   height: 4em;
   margin: .5em auto;
-  border: 1px solid #686868;
+  // border: 1px solid #686868;
+  border-radius: 0.375em;
   text-align: center;
   font-size: 1.7rem;
   line-height: 4em;
@@ -66,5 +85,9 @@ a {
 
 .section-heading {
   margin-top: 2em;
-  font-size: 1.9em;
+  font-size: 1.5em;
+  color: #50B7C8;
+  @media (min-width: $bp-medium) {
+    font-size: 1.9em;
+  }
 }

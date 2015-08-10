@@ -4,12 +4,13 @@
   "homepage": "http://github.com/sparkbox/mediaCheck",
   "devDependencies": {
     "grunt": "~0.4",
-    "grunt-contrib-uglify": "~0.2.1",
-    "grunt-contrib-coffee": "^0.10.1",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-contrib-concat": "^0.4.0",
     "grunt-banner": "^0.2.2",
     "grunt-bump": "0.0.14",
-    "grunt-contrib-compass": "^0.9.0"
+    "grunt-contrib-coffee": "^0.10.1",
+    "grunt-contrib-compass": "^0.9.0",
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-uglify": "~0.2.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-grunticon": "^2.2.0-beta.3"
   }
 }

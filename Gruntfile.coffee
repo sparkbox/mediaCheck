@@ -111,6 +111,6 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-bump"
 
   # Default task
-  grunt.registerTask "default", [ "coffee", "compass", "usebanner", "watch" ]
+  grunt.registerTask "default", [ "coffee", "grunticon", "compass", "usebanner", "watch" ]
 
   grunt.registerTask "dist", [ "coffee", "compass", "usebanner" ]

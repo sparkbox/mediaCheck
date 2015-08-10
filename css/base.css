@@ -366,76 +366,76 @@
 .hll {
   overflow: scroll;
   margin: 0;
+  font-size: 0.75em;
+}
+@media (min-width: 50em) {
+  .hll {
+    font-size: 1em;
+  }
 }
 
 .getItList {
   list-style: none;
   padding: 0;
-  margin-bottom: 2em;
-  max-width: 37em;
+  margin: 2em 0;
 }
 @media (min-width: 50em) {
   .getItList {
-    margin: 2em auto;
+    margin: 6em auto;
   }
 }
 
 .getItList-item {
-  margin: 1em 0 0;
+  text-align: center;
+}
+.getItList-item + .getItList-item {
+  margin-top: 3em;
 }
 @media (min-width: 50em) {
-  .getItList-item {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    display: inline-block;
+  .getItList-item + .getItList-item {
+    margin-top: 4em;
   }
-  .getItList-item.icon-bower {
-    width: 68%;
-  }
-  .getItList-item.icon-github {
-    width: 31%;
+}
+
+.bower {
+  white-space: nowrap;
+  font-family: Monaco, monospace;
+  background-color: #F3F3F3;
+  border: 1px solid #E4E4E4;
+  border-radius: 0.375em;
+  padding: 0.5rem;
+  font-size: 0.875em;
+}
+@media (min-width: 50em) {
+  .bower {
+    padding: 0.5rem 0.875rem;
+    font-size: 1.125em;
   }
 }
 
 .download {
-  display: inline-block;
-  font-weight: bold;
-  color: #fff;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  border: 1px solid #D5D5D5;
-  border-radius: 3px;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-appearance: none;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #60b044;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #8add6d), color-stop(100%, #60b044));
-  background-image: -webkit-linear-gradient(#8add6d, #60b044);
-  background-image: -moz-linear-gradient(#8add6d, #60b044);
-  background-image: -o-linear-gradient(#8add6d, #60b044);
-  background-image: linear-gradient(#8add6d, #60b044);
-  border-color: #5CA941;
   text-decoration: none;
-  font-family: helvetica;
-  font-size: .8em;
-  line-height: 1.8;
-  padding: 0.2em 0.8em;
-  letter-spacing: 0.02em;
+  padding: 0.5rem;
+  font-size: 1em;
+  color: white;
+  background-color: #50B7C8;
+  border: 1px solid #379dae;
+  border-radius: 0.375em;
+}
+@media (min-width: 50em) {
+  .download {
+    padding: 0.5rem 0.875rem;
+    font-size: 1.25em;
+  }
 }
 
 .sparkbox-footer {
-  color: #d7d1c7;
+  color: #8C8C8C;
   text-align: center;
   margin-bottom: 3em;
 }
 .sparkbox-footer a {
-  color: #d7d1c7;
+  color: #50B7C8;
 }
 
 .icon-sparkbox {
@@ -445,65 +445,75 @@
 }
 
 body {
-  font-family: avenir, sans-serif;
+  font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
   color: #686868;
-  background: url("../images/congruent_outline.png");
+  background-color: white;
   margin: 0;
 }
 
 a {
-  color: #686868;
+  color: #50B7C8;
+}
+
+code {
+  font-family: Monaco, monospace;
 }
 
 .content-wrapper {
-  -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  background: #fff;
-  padding: 1em;
-  width: 90%;
-  max-width: 85%;
+  width: 95%;
+  max-width: 50em;
   margin: 0 auto;
-}
-@media (min-width: 37em) {
-  .content-wrapper {
-    padding: 2em 7%;
-    max-width: 75%;
-  }
 }
 
 .main-heading {
-  font-size: 2.5em;
+  font-size: 1em;
+  text-indent: -99999px;
+  overflow: hidden;
   text-align: center;
-  margin: 0;
+  max-width: 40em;
+  margin: 1em auto;
+  background-size: contain;
+  background-position: center center;
 }
-@media (min-width: 37em) {
+@media (min-width: 50em) {
   .main-heading {
-    font-size: 3em;
+    margin: 3em auto;
   }
+}
+.main-heading:after {
+  padding-top: 18.6722%;
+  content: '';
+  display: block;
 }
 
 .tagline {
+  color: #acacac;
   text-align: center;
   margin: 0;
 }
 
 .description {
-  background: #eee;
-  padding: 2em;
-  font-size: 1.5em;
+  font-size: 1.125em;
+}
+@media (min-width: 50em) {
+  .description {
+    font-size: 1.5em;
+  }
 }
 
 .demo-area {
   color: #fff;
   height: 4em;
   margin: .5em auto;
-  border: 1px solid #686868;
+  border-radius: 0.375em;
   text-align: center;
   font-size: 1.7rem;
   line-height: 4em;
 }
-@media (min-width: 37em) {
+@media (min-width: 50em) {
   .demo-area {
     height: 5em;
     font-size: 2rem;
@@ -517,5 +527,11 @@ a {
 
 .section-heading {
   margin-top: 2em;
-  font-size: 1.9em;
+  font-size: 1.5em;
+  color: #50B7C8;
+}
+@media (min-width: 50em) {
+  .section-heading {
+    font-size: 1.9em;
+  }
 }
