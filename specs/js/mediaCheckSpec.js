@@ -13,7 +13,6 @@
         expect(mediaCheck).toHaveBeenCalledWith("test");
       });
     });
-    describe("polyfilled matchMedia support");
   });
 
 }).call(this);

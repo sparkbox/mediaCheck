@@ -74,9 +74,17 @@ module.exports = (grunt) ->
         pushTo: 'origin',
         gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d'
 
+    jasmine:
+      mediaCheck:
+        src: 'js/mediaCheck.js',
+        options:
+          specs: 'specs/js/*Spec.js',
+          helpers: 'spec/*Helper.js'
+
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-contrib-uglify"
   grunt.loadNpmTasks "grunt-contrib-coffee"
+  grunt.loadNpmTasks "grunt-contrib-jasmine"
   grunt.loadNpmTasks "grunt-banner"
   grunt.loadNpmTasks "grunt-bump"
 
