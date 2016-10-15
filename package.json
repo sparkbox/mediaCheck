@@ -8,7 +8,8 @@
     "build": "npm test && npm run coffee && node prependBanner ./js/mediaCheck.js",
     "dist": "npm run build && npm run uglify && node prependBanner ./js/mediaCheck-min.js",
     "coffee": "coffee -c -o js/ coffee/",
-    "uglify": "uglifyjs ./js/mediaCheck.js > ./js/mediaCheck-min.js"
+    "uglify": "uglifyjs ./js/mediaCheck.js > ./js/mediaCheck-min.js",
+    "postversion": "npm run dist"
   },
   "watch": {
     "build": {
