@@ -18,7 +18,6 @@
     "stylesheets",
     "node_modules",
     "index.html",
-    "coffee",
-    "Gruntfile.coffee"
+    "coffee"
   ]
 }
