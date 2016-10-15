@@ -19,6 +19,6 @@ module.exports = function(config) {
       'coffee/**/*.coffee',
       'specs/**/*[sS]pec.js'
     ],
-    reporters: ['dots']
+    reporters: ['progress']
   })
 }
