@@ -59,7 +59,7 @@ mediaCheck({
 
 ## Change History
  - 0.4.6
-   - You can now pass combined mediaqueries e.g. `(min-width: 320px and max-width: 800px)`
+   - You can now pass combined mediaqueries e.g. `(min-width: 320px) and (max-width: 800px)`
    - It also now accepts `[min|max]-aspect-ratio`
  - 0.4.5
    - Passing `mq` to `entry`, `exit`, and `both`
