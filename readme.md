@@ -11,6 +11,8 @@ This is a simple wrapper around matchMedia to run code on entry and exit from me
 
 
 ## Demo
+
+[![Join the chat at https://gitter.im/sparkbox/mediaCheck](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/sparkbox/mediaCheck?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 There are two examples here: http://sparkbox.github.io/mediaCheck/
 
 
