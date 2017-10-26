@@ -1,13 +1,12 @@
 {
   "name": "mediaCheck",
-  "version": "0.4.6",
+  "version": "0.5.0",
   "homepage": "http://github.com/sparkbox/mediaCheck",
   "scripts": {
     "test": "snyk test && karma start --single-run",
     "start": "npm-watch",
-    "build": "npm test && npm run coffee && node prependBanner ./js/mediaCheck.js",
+    "build": "npm test && node prependBanner ./js/mediaCheck.js",
     "dist": "npm run build && npm run uglify && node prependBanner ./js/mediaCheck-min.js",
-    "coffee": "coffee -c -o js/ coffee/",
     "uglify": "uglifyjs ./js/mediaCheck.js > ./js/mediaCheck-min.js",
     "postversion": "npm run dist"
   },
@@ -20,6 +19,7 @@
     }
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.0.0-beta.4",
     "coffee-script": "^1.11.1",
     "jasmine-core": "^2.5.2",
     "karma": "^1.3.0",
@@ -29,7 +29,7 @@
     "npm-watch": "^0.1.6",
     "phantomjs-prebuilt": "^2.1.13",
     "prepend-file": "^1.3.0",
-    "uglify-js": "^2.7.3",
-    "snyk": "^1.19.1"
+    "snyk": "^1.19.1",
+    "uglify-js": "^2.7.3"
   }
 }
