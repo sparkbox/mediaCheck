@@ -3,7 +3,8 @@
   "version": "0.4.6",
   "homepage": "http://github.com/sparkbox/mediaCheck",
   "scripts": {
-    "test": "snyk test && karma start --single-run",
+    "test": "ava",
+    "test:ci": "snyk test && ava",
     "start": "npm-watch",
     "build": "npm test && npm run coffee",
     "dist": "npm run build && npm run uglify",
@@ -11,7 +12,10 @@
     "postversion": "npm run dist"
   },
   "devDependencies": {
-    "uglify-js": "^2.7.3",
-    "snyk": "^1.19.1"
+    "ava": "^3.13.0",
+    "browserenv": "^1.0.0",
+    "sinon": "^9.2.0",
+    "snyk": "^1.19.1",
+    "uglify-js": "^2.7.3"
   }
 }
