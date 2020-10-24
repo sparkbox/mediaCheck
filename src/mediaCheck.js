@@ -14,7 +14,7 @@ function mediaCheck(options) {
   }
 
   function createListener() {
-    mq = window.matchMedia(options.media);
+    const mq = window.matchMedia(options.media);
     mq.addListener(function () { mqChange(mq, options); });
 
     window.addEventListener('orientationchange', function () {
