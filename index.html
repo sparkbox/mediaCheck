@@ -18,7 +18,7 @@
   <meta name="msapplication-TileImage" content="./images/touch-icon.png">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="stylesheet" href="images/icons/icons.data.svg.css">
-  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/mediaCheck.css">
   <!--[if lte IE 8]>
   <link rel="stylesheet" href="images/icons/icons.fallback.css">
   <link rel="stylesheet" href="css/ie.css">
@@ -32,13 +32,13 @@
     </header>
 
     <section>
-      <p class="description">mediaCheck is a simple wrapper around matchMedia to run code on entry and exit from media queries. It also uses browser resize as a fallback for browsers that don&rsquo;t support matchMedia.</p>
+      <p class="description">mediaCheck is a simple wrapper around matchMedia to run code on entry and exit from media queries. Version 1 drops support for browsers without matchMedia support. If you need to support older browsers, you can use an <a href="https://github.com/sparkbox/mediaCheck/releases">older version.</a></p>
 
       <div>
         <ul class="getItList">
           <li class="getItList-item">
-            <code class="bower">
-              bower install mediaCheck
+            <code class="npm">
+              npm install mediaCheck
             </code>
           </li>
           <li class="getItList-item">
@@ -53,81 +53,67 @@
       <div>
         <h2 class="section-heading">Examples</h2>
 
-        <ul class="exampleList">
-          <li class="exampleList-item active">
-            <h3 class="exampleList-heading">
-              <a href="#simple" class="exampleList-link">Simple</a>
-            </h3>
-          </li>
-          <li class="exampleList-item">
-            <h3 class="exampleList-heading">
-              <a href="#complex" class="exampleList-link">More Complex</a>
-            </h3>
-          </li>
-        </ul>
-<div class="highlight example active" id="simple"><pre class="hll">
-<code>
-  <span class="nx">mediaCheck</span><span class="p">({</span>
-    <span class="nx">media</span><span class="o">:</span> <span class="s1">'(max-width: 420px)'</span><span class="p">,</span>
-    <span class="nx">entry</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'starting 420'</span><span class="p">);</span>
-    <span class="p">},</span>
-    <span class="nx">exit</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'leaving 420'</span><span class="p">);</span>
-    <span class="p">},</span>
-    <span class="nx">both</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'changing state'</span><span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">});</span>
+<pre>
+<code class="javascript hljs">  mediaCheck({
+    <span class="hljs-attr">media</span>: <span class="hljs-string">&#x27;(max-width: 420px)&#x27;</span>,
+    <span class="hljs-attr">entry</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;starting 420&#x27;</span>);
+    },
+    <span class="hljs-attr">exit</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;leaving 420&#x27;</span>);
+    },
+    <span class="hljs-attr">both</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;changing state&#x27;</span>);
+    }
+  });
 </code>
 </pre>
-</div>
 
-<div class="highlight example" id="complex"><pre class="hll">
-<code>
-  <span class="kd">var</span> <span class="nx">$demo</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.demo-area&#39;</span><span class="p">);</span>
+<pre>
+<code class="javascript hljs">  <span class="hljs-keyword">import</span> mediaCheck <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./mediaCheck&#x27;</span>;
 
-  <span class="kd">function</span> <span class="nx">smallScreen</span><span class="p">(</span><span class="nx">mq</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">mq</span><span class="p">.</span><span class="nx">media</span><span class="p">)</span>
-    <span class="nx">$demo</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;This is a smaller screen.&#39;</span><span class="p">);</span>
-    <span class="nx">$demo</span><span class="p">.</span><span class="nx">animate</span><span class="p">({</span>
-      <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">&#39;#19ae2b&#39;</span>
-    <span class="p">});</span>
-  <span class="p">}</span>
+  <span class="hljs-keyword">const</span> demo = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;.demo-area&#x27;</span>);
 
-  <span class="kd">function</span> <span class="nx">largeScreen</span><span class="p">(</span><span class="nx">mq</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">width</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">900</span><span class="p">)</span> <span class="p">{</span>
-      <span class="c1">// Note: Because this gets called by both media query checks,</span>
-      <span class="c1">// it needs to make sure that it actually needs to apply so</span>
-      <span class="c1">// it doesn&#39;t overwrite the smallScreen message.</span>
-      <span class="nx">$demo</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;This is a larger screen.&#39;</span><span class="p">);</span>
-      <span class="nx">$demo</span><span class="p">.</span><span class="nx">animate</span><span class="p">({</span>
-        <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">&#39;#d3811e&#39;</span>
-      <span class="p">});</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">smallScreen</span>(<span class="hljs-params">mq</span>) </span>{
+    <span class="hljs-keyword">if</span> (mq.media)
+    demo.innerText = <span class="hljs-string">&#x27;This is a smaller screen.&#x27;</span>;
+    demo.classList.add(<span class="hljs-string">&#x27;green&#x27;</span>);
+    demo.classList.remove(<span class="hljs-string">&#x27;blue&#x27;</span>, <span class="hljs-string">&#x27;orange&#x27;</span>);
+  }
 
-  <span class="kd">function</span> <span class="nx">dude</span><span class="p">(</span><span class="nx">mq</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">$demo</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s2">&quot;Dude, that&#39;s a really big screen.&quot;</span><span class="p">);</span>
-    <span class="nx">$demo</span><span class="p">.</span><span class="nx">animate</span><span class="p">({</span>
-      <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">&#39;#6814d3&#39;</span>
-    <span class="p">});</span>
-  <span class="p">}</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">largeScreen</span>(<span class="hljs-params">mq</span>) </span>{
+    <span class="hljs-keyword">debugger</span>;
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.body.offsetWidth &gt;= <span class="hljs-number">900</span>) {
+      <span class="hljs-comment">// Note: Because this gets called by both mediaquery checks,</span>
+      <span class="hljs-comment">// it needs to make sure that it actually needs to apply so</span>
+      <span class="hljs-comment">// it doesn&#x27;t overwrite the smallScreen message.</span>
 
-  <span class="nx">mediaCheck</span><span class="p">({</span>
-    <span class="nx">media</span><span class="o">:</span> <span class="s1">&#39;(min-width: 900px)&#39;</span><span class="p">,</span>
-    <span class="nx">entry</span><span class="o">:</span> <span class="nx">largeScreen</span><span class="p">,</span>
-    <span class="nx">exit</span><span class="o">:</span> <span class="nx">smallScreen</span>
-  <span class="p">});</span>
+      demo.innerText = <span class="hljs-string">&#x27;This is a larger screen.&#x27;</span>;
+      demo.classList.add(<span class="hljs-string">&#x27;orange&#x27;</span>);
+      demo.classList.remove(<span class="hljs-string">&#x27;blue&#x27;</span>, <span class="hljs-string">&#x27;green&#x27;</span>);
+      <span class="hljs-built_in">console</span>.log(demo.classList);
+    }
+  }
 
-  <span class="nx">mediaCheck</span><span class="p">({</span>
-    <span class="nx">media</span><span class="o">:</span> <span class="s1">&#39;(min-width: 1400px)&#39;</span><span class="p">,</span>
-    <span class="nx">entry</span><span class="o">:</span> <span class="nx">dude</span><span class="p">,</span>
-    <span class="nx">exit</span><span class="o">:</span> <span class="nx">largeScreen</span>
-  <span class="p">});</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dude</span>(<span class="hljs-params">mq</span>) </span>{
+    demo.innerText = <span class="hljs-string">&quot;Dude, that&#x27;s a really big screen.&quot;</span>;
+    demo.classList.add(<span class="hljs-string">&#x27;blue&#x27;</span>);
+    demo.classList.remove(<span class="hljs-string">&#x27;orange&#x27;</span>, <span class="hljs-string">&#x27;green&#x27;</span>);
+  }
+
+  mediaCheck({
+    <span class="hljs-attr">media</span>: <span class="hljs-string">&#x27;(min-width: 900px)&#x27;</span>,
+    <span class="hljs-attr">entry</span>: largeScreen,
+    <span class="hljs-attr">exit</span>: smallScreen
+  });
+
+  mediaCheck({
+    <span class="hljs-attr">media</span>: <span class="hljs-string">&#x27;(min-width: 1200px)&#x27;</span>,
+    <span class="hljs-attr">entry</span>: dude,
+    <span class="hljs-attr">exit</span>: largeScreen
+  });
 </code>
 </pre>
-</div>
       </div>
 
       <div>
@@ -184,9 +170,6 @@
     </p>
   </footer>
 
-  <script src="js/jquery.js"></script>
-  <script src="js/jquery.color.js"></script>
-  <script src="js/mediaCheck.js"></script>
-  <script src="js/demo.js"></script>
+  <script src="js/mediaCheck-demo.js"></script>
 </body>
 </html>

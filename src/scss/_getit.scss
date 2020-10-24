@@ -1,0 +1,50 @@
+.getItList {
+  list-style: none;
+  padding: 0;
+  margin: 2em 0;
+
+  @media (min-width: 50em) {
+    margin: 6em auto;
+  }
+}
+
+.npm {
+  white-space: nowrap;
+  font-family: Monaco, monospace;
+  background-color: #F3F3F3;
+  border: 1px solid #E4E4E4;
+  border-radius: 0.375em;
+  padding: 0.5rem;
+  font-size: 0.875em;
+
+  @media(min-width: 50em) {
+    padding: 0.5rem 0.875rem;
+    font-size: 1.125em;
+  }
+}
+
+.getItList-item {
+  text-align: center;
+
+  & + & {
+    margin-top: 3em;
+    @media (min-width: 50em) {
+      margin-top: 4em;
+    }
+  }
+}
+
+.download {
+  text-decoration: none;
+  padding: 0.5rem;
+  font-size: 1em;
+  color: white;
+  background-color: #50B7C8;
+  border: 1px solid darken(#50B7C8, 10%);
+  border-radius: 0.375em;
+
+  @media (min-width: 50em) {
+    padding: 0.5rem 0.875rem;
+    font-size: 1.25em;
+  }
+}

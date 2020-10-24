@@ -1,0 +1,12 @@
+.icon-github {
+  background-image: url('../images/icon-github.png');
+  height: 45px;
+  padding-left: 60px;
+  background-repeat: no-repeat;
+  line-height: 37px;
+  font-size: 1.1em;
+
+  @media (min-width: 55em) {
+    font-size: 1.5em;
+  }
+}

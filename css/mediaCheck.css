@@ -1,0 +1,298 @@
+/* a11y-dark theme */
+/* Based on the Tomorrow Night Eighties theme: https://github.com/isagalaev/highlight.js/blob/master/src/styles/tomorrow-night-eighties.css */
+/* @author: ericwbailey */
+/* Comment */
+.hljs-comment,
+.hljs-quote {
+  color: #d4d0ab;
+}
+
+/* Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+  color: #ffa07a;
+}
+
+/* Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+  color: #f5ab35;
+}
+
+/* Yellow */
+.hljs-attribute {
+  color: #ffd700;
+}
+
+/* Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+  color: #abe338;
+}
+
+/* Blue */
+.hljs-title,
+.hljs-section {
+  color: #00e0e0;
+}
+
+/* Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+  color: #dcc6e0;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: #2b2b2b;
+  color: #f8f8f2;
+  padding: 0.5em;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .hljs-addition,
+.hljs-attribute,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-bullet,
+.hljs-comment,
+.hljs-link,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-params,
+.hljs-string,
+.hljs-symbol,
+.hljs-type,
+.hljs-quote {
+    color: highlight;
+  }
+
+  .hljs-keyword,
+.hljs-selector-tag {
+    font-weight: bold;
+  }
+}
+.icon-github {
+  background-image: url("../images/icon-github.png");
+  height: 45px;
+  padding-left: 60px;
+  background-repeat: no-repeat;
+  line-height: 37px;
+  font-size: 1.1em;
+}
+@media (min-width: 55em) {
+  .icon-github {
+    font-size: 1.5em;
+  }
+}
+
+.hll {
+  overflow: scroll;
+  margin: 0;
+  font-size: 0.75em;
+}
+@media (min-width: 50em) {
+  .hll {
+    font-size: 1em;
+  }
+}
+
+.getItList {
+  list-style: none;
+  padding: 0;
+  margin: 2em 0;
+}
+@media (min-width: 50em) {
+  .getItList {
+    margin: 6em auto;
+  }
+}
+
+.npm {
+  white-space: nowrap;
+  font-family: Monaco, monospace;
+  background-color: #F3F3F3;
+  border: 1px solid #E4E4E4;
+  border-radius: 0.375em;
+  padding: 0.5rem;
+  font-size: 0.875em;
+}
+@media (min-width: 50em) {
+  .npm {
+    padding: 0.5rem 0.875rem;
+    font-size: 1.125em;
+  }
+}
+
+.getItList-item {
+  text-align: center;
+}
+.getItList-item + .getItList-item {
+  margin-top: 3em;
+}
+@media (min-width: 50em) {
+  .getItList-item + .getItList-item {
+    margin-top: 4em;
+  }
+}
+
+.download {
+  text-decoration: none;
+  padding: 0.5rem;
+  font-size: 1em;
+  color: white;
+  background-color: #50B7C8;
+  border: 1px solid #379dae;
+  border-radius: 0.375em;
+}
+@media (min-width: 50em) {
+  .download {
+    padding: 0.5rem 0.875rem;
+    font-size: 1.25em;
+  }
+}
+
+.sparkbox-footer {
+  color: #8C8C8C;
+  text-align: center;
+  margin-bottom: 3em;
+}
+.sparkbox-footer a {
+  color: #50B7C8;
+}
+
+.icon-sparkbox {
+  height: 55px;
+  width: 51px;
+  margin: 2em auto 0;
+}
+
+body {
+  font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  color: #686868;
+  background-color: white;
+  margin: 0;
+}
+
+a {
+  color: #50B7C8;
+}
+
+code {
+  font-family: Monaco, monospace;
+}
+
+.content-wrapper {
+  box-sizing: border-box;
+  width: 95%;
+  max-width: 50em;
+  margin: 0 auto;
+}
+
+.main-heading {
+  font-size: 1em;
+  text-indent: -99999px;
+  overflow: hidden;
+  text-align: center;
+  max-width: 40em;
+  margin: 1em auto;
+  background-size: contain;
+  background-position: center center;
+}
+@media (min-width: 50em) {
+  .main-heading {
+    margin: 3em auto;
+  }
+}
+.main-heading:after {
+  padding-top: 18.6721991701%;
+  content: "";
+  display: block;
+}
+
+.tagline {
+  color: #acacac;
+  text-align: center;
+  margin: 0;
+}
+
+.description {
+  font-size: 1.125em;
+}
+@media (min-width: 50em) {
+  .description {
+    font-size: 1.5em;
+  }
+}
+
+.demo-area {
+  color: #fff;
+  height: 4em;
+  margin: 0.5em auto;
+  border-radius: 0.375em;
+  text-align: center;
+  font-size: 1.7rem;
+  line-height: 4em;
+  transition: background-color 0.5s ease;
+  background-color: #537e91;
+}
+@media (min-width: 50em) {
+  .demo-area {
+    height: 5em;
+    font-size: 2rem;
+    line-height: 4.9;
+  }
+}
+
+.blue {
+  background-color: #50b7c8;
+}
+
+.orange {
+  background-color: #557e85;
+}
+
+.green {
+  background-color: #8a8a8a;
+}
+
+.option {
+  border-bottom: 1px solid #686868;
+}
+
+.section-heading {
+  margin-top: 2em;
+  font-size: 1.5em;
+  color: #50B7C8;
+}
+@media (min-width: 50em) {
+  .section-heading {
+    font-size: 1.9em;
+  }
+}
+
+/*# sourceMappingURL=mediaCheck.css.map */

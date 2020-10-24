@@ -1,7 +1,6 @@
 body {
   font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
   color: #686868;
-  // background: url('../images/congruent_outline.png');
   background-color: white;
   margin: 0;
 }
@@ -15,15 +14,10 @@ code {
 }
 
 .content-wrapper {
-  @include box-sizing('border-box');
+  box-sizing: border-box;
   width: 95%;
   max-width: 50em;
   margin: 0 auto;
-
-  // @media (min-width: $bp-medium) {
-  //   padding: 2em 7%;
-  //   max-width: 75%;
-  // }
 }
 
 .main-heading {
@@ -54,8 +48,6 @@ code {
 }
 
 .description {
-  // background: #eee;
-  // padding: 2em;
   font-size: 1.125em;
   @media(min-width: $bp-medium) {
     font-size: 1.5em;
@@ -71,12 +63,26 @@ code {
   text-align: center;
   font-size: 1.7rem;
   line-height: 4em;
+  transition: background-color 0.5s ease;
+  background-color: #537e91;
 
   @media (min-width: $bp-medium) {
     height: 5em;
     font-size: 2rem;
     line-height: 4.9;
   }
+}
+
+.blue {
+  background-color: #50b7c8;
+}
+
+.orange {
+  background-color: #557e85;
+}
+
+.green {
+  background-color: #8a8a8a;
 }
 
 .option {
@@ -87,6 +93,7 @@ code {
   margin-top: 2em;
   font-size: 1.5em;
   color: #50B7C8;
+
   @media (min-width: $bp-medium) {
     font-size: 1.9em;
   }
