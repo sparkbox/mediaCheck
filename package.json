@@ -3,19 +3,13 @@
   "version": "0.4.6",
   "homepage": "http://github.com/sparkbox/mediaCheck",
   "scripts": {
-    "test": "ava",
-    "test:ci": "snyk test && ava",
-    "start": "npm-watch",
-    "build": "npm test && npm run coffee",
-    "dist": "npm run build && npm run uglify",
-    "uglify": "uglifyjs ./js/mediaCheck.js > ./js/mediaCheck-min.js",
-    "postversion": "npm run dist"
+    "test": "",
+    "test:ci": "snyk test && ava"
   },
+  "main": "src.mediaCheck.js",
   "devDependencies": {
-    "ava": "^3.13.0",
     "browserenv": "^1.0.0",
     "sinon": "^9.2.0",
-    "snyk": "^1.19.1",
-    "uglify-js": "^2.7.3"
+    "snyk": "^1.19.1"
   }
 }
