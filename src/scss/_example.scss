@@ -1,0 +1,8 @@
+.hll {
+  overflow: scroll;
+  margin: 0;
+  font-size: 0.75em;
+  @media(min-width: $bp-medium) {
+    font-size: 1em;
+  }
+}
