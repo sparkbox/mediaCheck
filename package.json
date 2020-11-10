@@ -1,6 +1,6 @@
 {
   "name": "mediaCheck",
-  "version": "0.4.6",
+  "version": "1.0.0",
   "homepage": "http://github.com/sparkbox/mediaCheck",
   "scripts": {
     "test": "jest"
