@@ -1,11 +1,11 @@
 {
-  "name": "mediaCheck",
-  "version": "0.4.6",
+  "name": "mediacheck",
+  "version": "1.0.1",
   "homepage": "http://github.com/sparkbox/mediaCheck",
   "scripts": {
     "test": "jest"
   },
-  "main": "src.mediaCheck.js",
+  "main": "src/mediaCheck.js",
   "devDependencies": {
     "jest": "^26.6.0"
   },
