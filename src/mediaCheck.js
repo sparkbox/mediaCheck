@@ -9,8 +9,8 @@ function mediaCheck(options) {
       if (typeof options.entry === 'function') { options.entry(mq); }
     } else {
       if (typeof options.exit === 'function') { options.exit(mq); }
-      if (typeof options.both === 'function') { options.both(mq); }
     }
+    if (typeof options.both === 'function') { options.both(mq); }
   }
 
   function createListener() {

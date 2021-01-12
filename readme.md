@@ -58,6 +58,9 @@ mediaCheck({
 ```
 
 ## Change History
+ - 1.0.3
+   - Fixes a bug that caused the both function to  
+     only work on exit, but not entry.
  - 1.0.0
    - Drop support for IE < 10
  - 0.4.6
