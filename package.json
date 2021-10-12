@@ -4,7 +4,8 @@
   "homepage": "http://github.com/sparkbox/mediaCheck",
   "scripts": {
     "js": "webpack",
-    "styles": "sass src/scss/base.scss css/mediaCheck.css"
+    "styles": "sass src/scss/base.scss css/mediaCheck.css",
+    "test": "echo \"Error: no test for gh-pages\" && exit 1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
