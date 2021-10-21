@@ -1,4 +1,4 @@
-import mediaCheck from './mediaCheck';
+import mediaCheck from '../../../src/mediaCheck';
 
 const demo = document.querySelector('.demo-area');
 
