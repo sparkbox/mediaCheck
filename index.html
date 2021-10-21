@@ -1,13 +1,7 @@
 <!doctype html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-
-<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<html class="no-js" lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>mediaCheck | Control JavaScript based on media query definitions</title>
   <meta name="description" content="">
 	<link rel="apple-touch-icon" href="./images/touch-icon.png" />
@@ -17,17 +11,20 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="./images/touch-icon.png">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <link rel="stylesheet" href="images/icons/icons.data.svg.css">
   <link rel="stylesheet" href="css/mediaCheck.css">
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="images/icons/icons.fallback.css">
-  <link rel="stylesheet" href="css/ie.css">
-  <![endif]-->
 </head>
 <body>
-  <div class="content-wrapper">
+  <main class="content-wrapper">
     <header>
-      <h1 class="main-heading icon-mediaCheck">mediaCheck</h1>
+      <h1 class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 482 90">
+          <title>Media Check</title>
+          <path class="svg-primary" d="M18 81V9h27V0H18a9 9 0 0 0-9 9v27l-9 9 9 9v27c0 4.8 4.2 9 9 9h27v-9H18m72 0V9H63V0h27a9 9 0 0 1 9 9v27l9 9-9 9v27c0 4.8-4.2 9-9 9H63v-9h27"/>
+          <path class="svg-primary" d="M172.7 36.3c1.9 0 3.5.3 4.8 1 1.4.6 2.5 1.5 3.3 2.6a11 11 0 0 1 2 3.7c.3 1.4.5 2.9.5 4.3v18h-7.2V50c0-.8 0-1.6-.2-2.6 0-.9-.3-1.7-.7-2.5-.4-.7-1-1.3-1.7-1.8s-1.6-.7-2.8-.7c-1.1 0-2 .2-2.9.7-.8.5-1.4 1.1-2 1.9a8 8 0 0 0-1 2.5c-.3 1-.4 1.9-.4 2.8V66h-7.2V48.5c0-1.8-.5-3.3-1.3-4.4-.9-1.2-2.2-1.8-4-1.8a5.6 5.6 0 0 0-4.8 2.5c-.5.7-1 1.5-1.2 2.4-.3 1-.4 2-.4 2.9v15.8h-7.2V37.1h6.9v4.7c.4-.8.8-1.4 1.4-2a10 10 0 0 1 4.4-3c1-.4 2-.5 3.2-.5 2.3 0 4.1.5 5.6 1.5a10 10 0 0 1 3.4 4c1-1.8 2.3-3.2 3.9-4.1a11 11 0 0 1 5.6-1.4m46.5 15.6v2h-22a7.1 7.1 0 0 0 2.7 5 9 9 0 0 0 5.6 2 8.6 8.6 0 0 0 7.6-3.7l4.8 3.8c-2.9 3.9-7 5.8-12.4 5.8-2.2 0-4.3-.4-6.2-1-1.8-.8-3.5-1.8-4.9-3a13.4 13.4 0 0 1-3.2-4.8c-.8-1.8-1.2-4-1.2-6.3s.4-4.4 1.2-6.3a14.4 14.4 0 0 1 14-9.1c2 0 4 .3 5.6 1a12 12 0 0 1 4.4 3c1.3 1.2 2.3 2.8 3 4.8.7 2 1 4.2 1 6.8Zm-7.2-3.2a8 8 0 0 0-.4-2.7 6 6 0 0 0-3.4-3.8c-.8-.3-1.8-.5-3-.5-2.1 0-4 .6-5.5 2a7.1 7.1 0 0 0-2.5 5H212ZM255.4 66h-6.8v-4.4h-.1c-1 1.7-2.4 3-4.2 3.9a13.7 13.7 0 0 1-16-3.2c-1.3-1.4-2.2-3-2.9-5a17.7 17.7 0 0 1 0-11.8 13 13 0 0 1 3-4.8 13.5 13.5 0 0 1 18.3-1.4l1.4 1.5h.1V20.6h7.2v45.3Zm-23.7-14.6c0 1.1.2 2.3.6 3.4.3 1 .8 2 1.5 3a7.6 7.6 0 0 0 6.2 3c1.3 0 2.5-.3 3.6-.8 1-.6 1.9-1.3 2.6-2.2a10.2 10.2 0 0 0 0-12.7 9 9 0 0 0-2.6-2 7.8 7.8 0 0 0-7.2 0c-1 .4-2 1.1-2.6 2-.7.9-1.2 1.9-1.6 3a12 12 0 0 0-.5 3.3Zm31.6-24c0-1.2.4-2.2 1.3-3a4 4 0 0 1 3.3-1.4c1.3 0 2.4.4 3.3 1.3a4 4 0 0 1 1.3 3 4 4 0 0 1-1.3 3.1c-1 .9-2 1.3-3.3 1.3a4.4 4.4 0 0 1-4.6-4.3Zm1 9.7h7.2V66h-7.2V37.1Zm33.9 25.2h-.2a8 8 0 0 1-3.5 3.1 12 12 0 0 1-5.5 1.3c-1.1 0-2.3-.2-3.6-.5a11 11 0 0 1-3.5-1.5c-1-.7-2-1.6-2.6-2.8a8 8 0 0 1-1-4.2c0-2.1.5-3.9 1.8-5.1 1.2-1.3 2.8-2.3 4.7-3a52.7 52.7 0 0 1 13.2-1.7v-.7c0-1.8-.6-3.1-2-4a8.2 8.2 0 0 0-4.6-1.3 11.8 11.8 0 0 0-7.9 3.3L280 41c1.6-1.6 3.5-2.7 5.6-3.5a19.3 19.3 0 0 1 12.9 0 9.6 9.6 0 0 1 5.9 6.7c.4 1.4.6 2.9.6 4.3V66h-6.7v-3.6Zm-.2-9.5h-1.6a48 48 0 0 0-3.6.1 16 16 0 0 0-3.6.7c-1 .3-2 .8-2.7 1.4-.7.7-1 1.5-1 2.6a3 3 0 0 0 1.6 2.8c.4.3 1 .5 1.6.6l1.8.2c2.5 0 4.3-.7 5.6-2 1.3-1.3 2-3.1 2-5.4v-1Z"/>  
+          <path class="svg-accent" d="M75 20.2 45 50.1l-9.4-9.4-9.4 9.4 18.9 18.8 39.2-39.2-9.4-9.5"/>
+          <path class="svg-accent" d="M344.1 33.4a9.7 9.7 0 0 0-4.4-3.3 14.5 14.5 0 0 0-15.9 3.4 14 14 0 0 0-3 5 19 19 0 0 0 0 12.5c.7 1.9 1.6 3.5 2.9 4.9a13 13 0 0 0 4.5 3.2c1.8.8 3.8 1.1 6 1.1s4.3-.4 6-1.3c1.8-1 3.2-2.1 4.3-3.6l6 4.3a19.4 19.4 0 0 1-6.9 5.5 22 22 0 0 1-9.5 2c-3.3 0-6.4-.6-9.1-1.7a21 21 0 0 1-13.6-20.8c0-3.4.6-6.5 1.8-9.2a20.5 20.5 0 0 1 12.1-11.5 26 26 0 0 1 17.7 0l3.8 2c1.2.9 2.2 1.8 3 3l-5.7 4.5m26.8 2.9c1.9 0 3.5.3 4.8 1 1.4.6 2.5 1.5 3.3 2.6a11 11 0 0 1 2 3.7c.3 1.4.5 2.9.5 4.3v18h-7.2V50.1c0-.8 0-1.7-.2-2.6 0-1-.3-1.7-.7-2.5a5 5 0 0 0-1.6-1.8c-.7-.5-1.7-.7-2.8-.7-1.2 0-2.2.2-3 .6-.9.5-1.6 1-2.1 1.8a8 8 0 0 0-1.3 2.5c-.3 1-.4 1.9-.4 2.8V66H355V20.6h7.2v20.6h.1l1.2-1.8a9.7 9.7 0 0 1 7.4-3.1m46.5 15.6v2h-22a7.1 7.1 0 0 0 2.7 5 9 9 0 0 0 5.5 2 8.6 8.6 0 0 0 7.6-3.7l4.9 3.8c-2.9 3.9-7 5.8-12.4 5.8-2.2 0-4.3-.4-6.2-1-1.9-.8-3.5-1.8-4.9-3a13.4 13.4 0 0 1-3.2-4.8c-.8-1.8-1.2-4-1.2-6.3s.4-4.4 1.2-6.3a14.4 14.4 0 0 1 14-9.1c2 0 4 .3 5.6 1a12 12 0 0 1 4.4 3c1.3 1.2 2.2 2.8 3 4.8.6 2 1 4.2 1 6.8Zm-7.2-3.2a8 8 0 0 0-.4-2.7 6 6 0 0 0-3.4-3.8c-.8-.3-1.8-.5-3-.5-2.2 0-4 .6-5.5 2a7.1 7.1 0 0 0-2.5 5h14.8Zm33.8-3.6a7.8 7.8 0 0 0-9.4-2c-1 .5-1.8 1.3-2.5 2.1-.6 1-1.1 1.9-1.5 3a11.8 11.8 0 0 0 0 6.7c.4 1 1 2 1.6 3 .7.8 1.5 1.5 2.6 2 1 .6 2.2.9 3.5.9 1.1 0 2.3-.2 3.4-.7 1.1-.4 2-1 2.7-2l4.5 4.7a12 12 0 0 1-4.6 3 17.8 17.8 0 0 1-12 0 14.3 14.3 0 0 1-9.6-14.3 14.4 14.4 0 0 1 9.5-14.2 16.4 16.4 0 0 1 12 .2 11 11 0 0 1 4.7 3.3L444 45m9.7-24.4h7.2v28.7h.2l11-12.2h9.2l-12.5 13L482.1 66h-9.6l-11.4-14.7h-.2V66h-7.2V20.6"/>
+        </svg>
+      </h1>
       <p class="tagline">Control JavaScript based on media query definitions</p>
     </header>
 
@@ -154,19 +151,23 @@
         </article>
       </div>
 
-      <footer>
+      <footer class="legal">
         <h2 class="section-heading">Legal Stuff</h2>
-        <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+        <div class="legal-group">
+          <a class="legal-link" rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+          <p class="legal-text" >This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+        </div>
       </footer>
     </section>
-  </div>
+  </main>
+
   <footer class="sparkbox-footer">
-    <a href="http://seesparkbox.com" title="Go to seesparkbox.com">
-      <div class="icon-sparkbox"></div>
+    <a class="sparkbox-link" href="https://sparkbox.com" title="Go to sparkbox.com">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 55" width="55" height="55" fill="currentColor"><path d="M9.5 54 20 34l3.5.2L18 45.1l21.2-16H.5s-.3 0-.5-.4c-.1-.5.2-.7.2-.7L38.8.2s.4-.3.7-.1c.3.2.2.5.2.5L29.3 21.5l-3.7.1 6-12.1L8.6 26h39s.3 0 .5.4l-.2.6-37.5 27.6s-.3.2-.6 0c-.4-.3-.2-.6-.2-.6Z"/><path d="M10.2 22V10.8h18.1l4.5-3H7.5c-.3 0-.3.3-.3.3v16l3-2Zm25.9-11.2c2 0 3.5 2.1 3.5 4 0 2-1.6 4.2-3.5 4.2h-9l-1.5 2.6s-.2.5.2.5h10.3c3.6 0 6.6-3.5 6.6-7.2s-3-7.2-6.6-7.2h-3l-.7 3.1H36Zm-3-3.2-.3.1h.3v-.1Zm3 25.8h-2.3l-4.2 3.1H36c2 0 3.6 2.1 3.6 4.1 0 2-1.7 4.1-3.6 4.1H19.5l-4.1 3H36c3.6 0 6.6-2.9 6.6-6.6 0-3.6-3-7.7-6.6-7.7ZM14.3 47.6l1-.9h-.6l-.4.9Zm-4-2.9v-8.2h11.8l1.6-2.5v-.5h-16c-.4 0-.5.4-.5.4v13.5s.1.4.5.4h7l1.4-3.1h-5.8Z"/></svg>
     </a>
 
     <p>
-      mediaCheck is a project of <a href="http://seesparkbox.com" title="Go to seesparkbox.com">Sparkbox</a>.
+      mediaCheck is a project of <a class="small-link" href="https://sparkbox.com" title="Go to sparkbox.com">Sparkbox</a>.
     </p>
   </footer>
 

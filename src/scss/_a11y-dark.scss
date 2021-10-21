@@ -5,7 +5,7 @@
 /* Comment */
 .hljs-comment,
 .hljs-quote {
-  color: #d4d0ab;
+  color: var(--code-comment);
 }
 
 /* Red */
@@ -17,7 +17,7 @@
 .hljs-selector-class,
 .hljs-regexp,
 .hljs-deletion {
-  color: #ffa07a;
+  color: var(--code-red);
 }
 
 /* Orange */
@@ -29,12 +29,12 @@
 .hljs-params,
 .hljs-meta,
 .hljs-link {
-  color: #f5ab35;
+  color: var(--code-orange);
 }
 
 /* Yellow */
 .hljs-attribute {
-  color: #ffd700;
+  color: var(--code-yellow);
 }
 
 /* Green */
@@ -42,26 +42,27 @@
 .hljs-symbol,
 .hljs-bullet,
 .hljs-addition {
-  color: #abe338;
+  color: var(--code-green);
 }
 
 /* Blue */
 .hljs-title,
 .hljs-section {
-  color: #00e0e0;
+  color: var(--code-blue);
 }
 
 /* Purple */
 .hljs-keyword,
 .hljs-selector-tag {
-  color: #dcc6e0;
+  color: var(--code-purple);
 }
 
 .hljs {
+  border-radius: 0.375rem;
   display: block;
   overflow-x: auto;
-  background: #2b2b2b;
-  color: #f8f8f2;
+  background: var(--code-bg);
+  color: var(--code-text);
   padding: 0.5em;
 }
 
