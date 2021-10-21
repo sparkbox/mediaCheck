@@ -1,0 +1,358 @@
+:root {
+  --font-main: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  --font-code: Monaco, monospace;
+  --color-text: hsl(0, 0%, 30%);
+  --color-bg: hsl(0, 0%, 100%);
+  --color-accent: hsl(189, 55%, 45%);
+  --color-accent-dark: hsl(189, 55%, 35%);
+  --color-demo-blue: hsl(189, 52%, 35%);
+  --color-demo-orange: hsl(189, 32%, 20%);
+  --color-demo-green: hsl(189, 12%, 20%);
+  --demo-color: var(--color-demo-blue);
+  --code-comment: hsl(189, 10%, 55%);
+  --code-red: hsl(189, 55%, 45%);
+  --code-orange: hsl(189, 60%, 45%);
+  --code-yellow: hsl(20, 50%, 45%);
+  --code-green: hsl(20, 70%, 60%);
+  --code-blue: hsl(189, 40%, 55%);
+  --code-purple: hsl(189, 60%, 55%);
+  --code-bg: hsl(189, 10%, 15%);
+  --code-text: hsl(189, 10%, 85%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: hsl(0, 0%, 100%);
+    --color-bg: hsl(0, 0%, 10%);
+    --color-accent: hsl(189, 65%, 45%);
+    --color-accent-dark: hsl(189, 65%, 55%);
+    --color-demo-blue: hsl(189, 52%, 85%);
+    --color-demo-orange: hsl(189, 32%, 70%);
+    --color-demo-green: hsl(189, 12%, 70%);
+  }
+}
+body {
+  font-family: var(--font-main);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  margin: 0;
+}
+
+a {
+  color: var(--color-accent);
+}
+a:hover {
+  text-decoration: none;
+}
+
+code {
+  font-family: var(--font-code);
+}
+
+.content-wrapper {
+  width: calc(100% - 2rem);
+  max-width: 50em;
+  margin: 0 auto;
+}
+
+.logo {
+  max-width: 40rem;
+  max-height: calc( ( 180 / 964 ) * 40rem );
+  margin: 4rem auto;
+}
+
+.section-heading {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  color: var(--color-accent);
+}
+@media (min-width: 56.25rem) {
+  .section-heading {
+    font-size: 2rem;
+  }
+}
+
+.tagline {
+  font-size: 1.25rem;
+  text-align: center;
+  margin: 0;
+}
+
+.description {
+  font-size: 1.125em;
+}
+@media (min-width: 56.25rem) {
+  .description {
+    font-size: 1.5em;
+  }
+}
+
+.demo-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-bg);
+  height: 20vh;
+  margin: 1rem auto;
+  border-radius: 0.375em;
+  text-align: center;
+  font-size: 1.75rem;
+  transition: background-color 0.5s ease;
+  background-color: var(--demo-color);
+}
+@media (min-width: 56.25rem) {
+  .demo-area {
+    --demo-color: var(--color-demo-green);
+    font-size: 2rem;
+  }
+}
+@media (min-width: 75rem) {
+  .demo-area {
+    --demo-color: var(--color-demo-orage);
+  }
+}
+
+.svg-primary {
+  fill: var(--color-text);
+}
+
+.svg-accent {
+  fill: var(--color-accent);
+}
+
+.blue {
+  --demo-color: var(--color-demo-blue);
+}
+
+.orange {
+  --demo-color: var(--color-demo-orange);
+}
+
+.green {
+  --demo-color: var(--color-demo-green);
+}
+
+.option + .option {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(128, 128, 128, 0.5);
+}
+
+.legal {
+  margin: 4.5rem 0;
+}
+
+.legal-group {
+  display: flex;
+  align-items: center;
+}
+
+.legal-link {
+  margin-right: 2rem;
+}
+
+.legal-text {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.2;
+}
+.legal-text a {
+  color: var(--color-accent-dark);
+}
+
+.small-link {
+  color: var(--color-accent-dark);
+}
+
+.sparkbox-footer {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sparkbox-link {
+  color: inherit;
+}
+
+.icon-sparkbox {
+  height: 55px;
+  width: 51px;
+  margin: 2em auto 0;
+}
+
+/* a11y-dark theme */
+/* Based on the Tomorrow Night Eighties theme: https://github.com/isagalaev/highlight.js/blob/master/src/styles/tomorrow-night-eighties.css */
+/* @author: ericwbailey */
+/* Comment */
+.hljs-comment,
+.hljs-quote {
+  color: var(--code-comment);
+}
+
+/* Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+  color: var(--code-red);
+}
+
+/* Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+  color: var(--code-orange);
+}
+
+/* Yellow */
+.hljs-attribute {
+  color: var(--code-yellow);
+}
+
+/* Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+  color: var(--code-green);
+}
+
+/* Blue */
+.hljs-title,
+.hljs-section {
+  color: var(--code-blue);
+}
+
+/* Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+  color: var(--code-purple);
+}
+
+.hljs {
+  border-radius: 0.375rem;
+  display: block;
+  overflow-x: auto;
+  background: var(--code-bg);
+  color: var(--code-text);
+  padding: 0.5em;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .hljs-addition,
+.hljs-attribute,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-bullet,
+.hljs-comment,
+.hljs-link,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-params,
+.hljs-string,
+.hljs-symbol,
+.hljs-type,
+.hljs-quote {
+    color: highlight;
+  }
+
+  .hljs-keyword,
+.hljs-selector-tag {
+    font-weight: bold;
+  }
+}
+.hll {
+  overflow: scroll;
+  margin: 0;
+  font-size: 0.75rem;
+}
+@media (min-width: 56.25rem) {
+  .hll {
+    font-size: 1rem;
+  }
+}
+
+.getItList {
+  list-style: none;
+  padding: 0;
+  margin: 2em 0;
+}
+@media (min-width: 50em) {
+  .getItList {
+    margin: 6em auto;
+  }
+}
+
+.npm {
+  white-space: nowrap;
+  font-family: var(--font-code);
+  background-color: #f2f2f2;
+  border: 1px solid #d9d9d9;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+@media (prefers-color-scheme: dark) {
+  .npm {
+    background-color: #0d0d0d;
+    border: 1px solid #262626;
+  }
+}
+@media (min-width: 50em) {
+  .npm {
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+  }
+}
+
+.getItList-item {
+  text-align: center;
+}
+.getItList-item + .getItList-item {
+  margin-top: 3em;
+}
+@media (min-width: 50em) {
+  .getItList-item + .getItList-item {
+    margin-top: 4em;
+  }
+}
+
+.download {
+  text-decoration: none;
+  padding: 0.75rem 1.75rem;
+  font-size: 1.25rem;
+  color: var(--color-bg);
+  background-color: var(--color-accent);
+  border: 2px solid var(--color-accent-dark);
+  border-radius: 0.375em;
+  transition: background-color 250ms ease-in-out, border-color 250ms ease-in-out;
+}
+.download:hover {
+  border-color: #1a1a1a;
+  background-color: var(--color-text);
+}
+@media (min-width: 50em) {
+  .download {
+    padding: 0.75rem 2rem;
+    font-size: 1.5em;
+  }
+}
+
+/*# sourceMappingURL=mediaCheck.css.map */

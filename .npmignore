@@ -1,0 +1,4 @@
+.circleci
+.github
+docs
+node_modules
