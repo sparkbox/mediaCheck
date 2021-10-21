@@ -1,0 +1,4 @@
+.circleci
+.github
+gh-pages
+node_modules
